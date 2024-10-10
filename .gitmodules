@@ -19,3 +19,6 @@
 [submodule "RandomSentenceGenerator"]
 	path = RandomSentenceGenerator
 	url = https://github.com/NotDeBread/RandomSentenceGenerator.git
+[submodule "WinnieAccumulator"]
+	path = WinnieAccumulator
+	url = https://github.com/NotDeBread/WinnieAccumulator.git
