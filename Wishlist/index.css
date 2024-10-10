@@ -1,0 +1,296 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --bouncy: cubic-bezier(0,2,.75,1);
+  --bg: rgb(10, 10, 10)
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#menuContainer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+  backdrop-filter: blur(10px);
+}
+
+.menu {
+  width: 40vw;
+  background-color: var(--bg);
+  box-shadow: 0px 0px 0px 5px var(--bg), 0px 0px 0px 7px white;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+}
+
+.menuBack {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  border: none;
+  box-shadow: 0px 0px 0px 5px var(--bg);
+  font-size: 1.25em;
+  font-family: "Poppins", sans-serif;
+  border-radius: 10px;
+  font-weight: 700;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menuSections {
+  display: flex;
+  gap: 10px;
+}
+
+#menuHeading {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.menu section {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#menuImg {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  background-image: url(images/items/fox.jpg);
+  background-size: cover;
+  background-position: center;
+  background-color: white;
+}
+
+#menuButtons {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#menuButtons a {
+  border: none;
+  font-size: 1.25em;
+  font-family: "Poppins", sans-serif;
+  border-radius: 10px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+  background-color: white;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleContainer {
+  width: 100vw;
+  display: flex;
+  margin-top: 50px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.itemContainer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+#itemContainer {
+  margin-top: 30px;
+  margin-bottom: 100px;
+  width: 75vw;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.item {
+  width: 400px;
+  height: 250px;
+  border-radius: 10px;
+  background-image: url(images/items/fox.jpg);
+  background-color: white;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0px 0px 0px 5px var(--bg), 0px 0px 0px 7px white;
+  transition: box-shadow var(--bouncy) 0.25s;
+}
+
+.item:hover {
+  box-shadow: 0px 0px 0px 7px var(--bg), 0px 0px 0px 9px white;
+}
+
+.item:active {
+  box-shadow: 0px 0px 0px 5px var(--bg), 0px 0px 0px 7px white;
+}
+
+.itemContent {
+  position: absolute;
+  padding: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.itemName {
+  font-size: 1.25em;
+  font-weight: 700;
+}
+
+.itemPrice {
+  position: absolute;
+  bottom: -15px;
+  left: 10px;
+  color: var(--bg);
+  border-radius: 5px;
+  box-shadow: 0px 0px 0px 5px var(--bg);
+  padding: 2px 5px;
+  font-weight: 700;
+}
+
+.itemTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.itemTags span {
+  padding: 2px 5px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  font-weight: 700;
+}
+
+.itemVignette {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 100px black inset;
+  z-index: 1;
+}
+
+#giftcardContainer {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+#giftcardTitle {
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+#giftcards {
+  display: flex;
+}
+
+#giftcards a {
+  transition: translate ease-out 0.25s;
+  cursor: pointer;
+}
+
+#giftcards a img {
+  border-radius: 15px;
+}
+
+#giftcards a:nth-child(1) {
+  transform: rotate(-20deg) translateX(50px) translateY(40px);
+  z-index: 3;
+}
+
+#giftcards a:nth-child(2) {
+  z-index: 2;
+}
+
+#giftcards a:nth-child(3) {
+  z-index: 1;
+  transform: rotate(20deg) translateX(-50px) translateY(40px);
+}
+
+#giftcards a:hover {
+  translate: 0px -50px;
+  z-index: 4;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer img {
+  width: 200px;
+}
+
+@media screen and (max-width: 1000px) {
+  .menuSections {
+    flex-direction: column;
+  }
+  .menuSections section {
+    width: 100%;
+  }
+  .menu {
+    width: 85vw;
+  }
+  .title {
+    font-size: 1.25em;
+  }
+
+  #giftcards {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #giftcards a {
+    transform: none !important;
+  }
+}

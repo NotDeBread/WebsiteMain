@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="breadGame.css">
+    <link rel="stylesheet" href="underBread.css">
+    <title>DeBread's Space</title>
+</head>
+
+<body>
+    <div id="loadingScreen">
+        <span>LOADING...</span><br>
+        <span id="texturesLoaded">0/0</span>
+        <div id="loadingBarContainer">
+            <div id="loadingBar"></div>
+        </div>
+        <button onclick="doge('loadingScreen').style.display = 'none'" style="margin-top: 50px;">Skip Loading...</button>
+    </div>
+
+    <span id="cursorText"></span>
+    <div id="cursor"></div>
+    <div id="realCursor"></div>
+
+    <img id="soul" src="media/underBread/img/soul.png">
+
+    <div id="underBreadGameOver">
+        <div id="underBreadGameOverText">
+            <span>GAME</span>
+            <span>OVER</span>
+        </div>
+        <span>Press [Z] to restart</span>
+        <span>Press [X] to exit</span>
+    </div>
+    <div id="underBreadContainer">
+        <div id="underEnemyContainer">
+            <img src="media/underBread/img/tempEnemy.png" width="100%">
+        </div>
+        <div id="underEnemyBarContainer">
+            <div id="underEnemyBar">
+                <div id="underInnerEnemyBar">
+
+                </div>
+            </div>
+        </div>
+        <span id="underInfo" style="width: 600px;"></span>
+        <div id="underPlayArea">
+        </div>
+        <div id="underStats">
+            <span>Player</span>
+            <span>Lvl 4</span>
+            <div style="display: flex; gap: 5px; margin-left: 50px;">
+                <span>HP</span>
+                <div id="underHealthBar">
+                    <div id="underInnerHealthBar"></div>
+                </div>
+                <span id="underHP">20 / 20</span>
+            </div>
+        </div>
+        <div id="underButtons">
+            <img src="media/underBread/img/fightS.png" id="underButton0">
+            <img src="media/underBread/img/act.png" id="underButton1">
+            <img src="media/underBread/img/item.png" id="underButton2">
+            <img src="media/underBread/img/mercy.png" id="underButton3">
+        </div>
+        <span id="underAudioCounter">Sounds: -</span>
+    </div>
+
+    <div id="breadGameContainer">
+        <div id="breadGameOverlay">
+            <span style="font-size: 2em;">Bread Game</span>
+            <span onclick="start()">SPACE to jump, S/DOWN ARROW to slide</span>
+            <button onclick="start()">PLAY</button>
+            <button onclick="closeBG()">CLOSE</button>
+        </div>
+        <div id="breadGameDeath" style="opacity: 0; pointer-events: none;">
+            <span style="font-size: 2em;">you dead :(</span>
+            <button onclick="start()">TRY AGAIN</button>
+            <button onclick="closeBG()">CLOSE</button>
+        </div>
+        <span id="breadGamePoints">00000000</span>
+        <div id="breadGame">
+            <div id="breadGameSky">
+                <div id="breadGameBread">
+                    <img src="media/breadGame/bread.gif" id="breadGameBreadTexture">
+                </div>
+                <div id="breadGameBG"></div>
+            </div>
+            <div id="breadGameFloor"></div>
+        </div>
+    </div>
+
+    <div id="galleryContainer">
+        <div id="gallery">
+            <div id="mediaView">
+                <div id="mediaViewInfo">
+                    <span id="mediaViewTitle">Art Title</span>
+                    <em id="mediaViewDate">Art Date</em>
+                </div>
+                <img src="media/guy.png" id="mediaViewImg">
+                <div style="height: 50px;">
+                    <button style="width: 150px;" onclick="closeMediaView()">Close</button>
+                </div>
+            </div>
+            <div id="galleryHeader">
+                <span id="galleryHeaderText">// This is a header</span>
+                <button class="xButton" onclick="closeGallery()">×</button>
+            </div>
+            <div id="innerGallery">
+                <img src="media/art/goober/checkThisOut.png">
+            </div>
+            <div id="galleryFooter">
+                <span id="galleryFooterText">This is some footer text</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="header">
+        <div id="headerText">
+            <span style="font-size: 1.5em;" class="chunk">Welcome to</span><br>
+            <em style="font-size: 3em; font-weight: 900;" id="titleTextContainer" class="chunk"></em><br>
+            <span style="font-size: 1.5em; color: grey;" class="chunk">I make stuff</span><br>
+        </div>
+        <div id="headerVideoContainer">
+            <video id="headerBG" autoplay loop muted tabindex="-1">
+                <source src="media/bg.mp4" type="video/mp4">
+            </video>
+        </div>
+        <span id="guyCounter">0</span>
+        <img src="media/guy.png" id="guy" ignoreCursor="true" onclick="guyClick()" class="chunk">
+    </div>
+
+    <div id="main">
+        <div id="container2">
+            <div id="container0">
+                <div class="contentBox">
+                    <span style="font-size: 1.25em; font-weight: 700">Heya</span><br>
+                    <span>I'm a 16 year-old mediocre frontend</span>
+                    <span>web developer who makes silly</span>
+                    <span>games.</span>
+                </div>
+                <div class="contentBox">
+                    <span style="font-size: 1.25em; font-weight: 700">Socials</span><br>
+                    <a href="https://discord.gg/ENH9NZb6ZC">Discord Server</a><br>
+                    <a href="https://twitter.com/notdebread">Twitter</a><br>
+                    <a href="https://youtube.com/notdebread">YouTube Channel</a><br>
+                    <a href="https://github.com/notdebread">GitHub</a><br>
+                </div>
+                <div class="contentBox" style="width: 350px; max-width: 350px;">
+                    <span style="font-size: 1.25em; font-weight: 700">Gallery</span><br>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                        <button style="width: 150px;" onclick="openGallery('pixel')">Pixel Art</button>
+                        <button style="width: 150px;" onclick="openGallery('vector')">Vector Art</button>
+                        <button style="width: 150px;" onclick="openGallery('goober')">Goober Art</button>
+                        <button style="width: 150px;" onclick="openGallery('misc')">Misc Art</button>
+                        <!-- <button style="width: 150px;" onclick="openGallery('notebook')">Notebook Doodles</button> -->
+                        <!-- <button style="width: 100px;">Misc</button> -->
+                    </div>
+                </div>
+            </div>
+            <div id="container3">
+                <div class="contentBox" id="gameBox">
+                    <span style="font-size: 1.25em; font-weight: 700">Games</span><br>
+                    <div class="gameButtons">
+                        <div class="game" game="GooberShooter">
+                            <div class="gameInfo">
+                                <span>Goober Shooter</span><br>
+                                <em>Top-down shooter but awesome.</em>
+                            </div>
+                            <div class="gameBG" style="background-image: url(media/gameBGs/gooberShooter.png);"></div>
+                        </div>
+                        <div class="game" game="WinnieAccumulator">
+                            <div class="gameInfo">
+                                <span>Winnie Accumulator</span><br>
+                                <em>Eddie Accumulator, but better.</em>
+                            </div>
+                            <div class="gameBG" style="background-image: url(media/gameBGs/winnieAccumulator.png);"></div>
+                        </div>
+                        <div class="game" game="Eddie-Accumulator">
+                            <div class="gameInfo">
+                                <span>Eddie Accumulator</span><br>
+                                <em>Cookie Clicker, but better.</em>
+                            </div>
+                            <div class="gameBG" style="background-image: url(media/gameBGs/eddieAccumulator.png);"></div>
+                        </div>
+                        <!-- <div class="game mobileIncompatible" game="NotJSAB">
+                            <div class="gameInfo">
+                                <span>Not JSAB</span><br>
+                                <em>It's not JSAB.</em>
+                            </div>
+                            <div class="gameBG" style="background-image: url(media/gameBGs/notJSAB.png);"></div>
+                        </div> -->
+                        <div class="game" game="PressTheButton">
+                            <div class="gameInfo">
+                                <span>Press The Button</span><br>
+                                <em>Carpal tunnel simulator.</em>
+                            </div>
+                            <div class="gameBG" style="background-image: url(media/gameBGs/pressTheButton.png);"></div>
+                        </div>
+                    </div>
+                    <div class="gameButtons mobileIncompatible" style="margin-top: 10px;">
+                        <div class="game" style="height: 75px; line-height: 1;" game="MathGame">
+                            <div class="gameInfo">
+                                <span>Math Game</span><br>
+                                <em>A math game for my freshman algebra final.</em>
+                            </div>
+                            <div class="gameBG" style="background-image: url(media/gameBGs/mathGame.png);"></div>
+                        </div>
+                        <div class="game" style="height: 75px; line-height: 1;" game="RandomSentenceGenerator">
+                            <div class="gameInfo">
+                                <span>Random Sentence Generator</span><br>
+                                <em>Generate random sentences!</em>
+                            </div>
+                            <div class="gameBG" style="background-image: url(media/gameBGs/randomSentenceGenerator.png);"></div>
+                        </div>
+                        <div class="game mobileIncompatible" style="height: 75px; line-height: 1;" game="PixelGenerator">
+                            <div class="gameTag">Updated!</div>
+                            <div class="gameInfo">
+                                <span>Pixel Generator</span><br>
+                                <em>Generate random grids of pixels I guess.</em>
+                            </div>
+                            <div class="gameBG" style="background-image: url(media/gameBGs/pixelGenerator.png);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="container1">
+            <div class="contentBox" style="width: 350px; max-width: 350px; height: 450px; overflow-y: scroll; scrollbar-width: thin;">
+                <span style="font-size: 1.25em; font-weight: 700; margin-bottom: 50px;">News</span><br>
+                <div id="newsContainer">
+                    <div class="news">
+                        <span ignoreCursor="true">Goober Shooter released</span>
+                        <span ignoreCursor="true">
+                            After six months Goober Shooter is finally released! You can play it <a href="/GooberShooter/">Here.</a>
+                        </span>
+                        <em>August 20th, 2024</em>
+                    </div>
+                    <div class="news">
+                        <span ignoreCursor="true">DeBread.space v0.02 released</span>
+                        <span ignoreCursor="true">
+                            Fixed a few things and added a secret 'Bread Game' (Click the guy 10 times to unlock). Visit the <a
+                                href="https://github.com/NotDeBread/WebsiteV5/commits/master/" target="_blank">GitHub page</a> for the
+                            full changelog
+                        </span>
+                        <em>June 18th, 2024</em>
+                    </div>
+                    <div class="news">
+                        <span ignoreCursor="true">DeBread.space moves away from DeBreadOS</span>
+                        <span ignoreCursor="true">
+                            After a few months after DeBreadOS' release, I've decided it wasn't the greatest way of showing all of my content. So I made this
+                            simpler, easier to use website instead.
+                        </span>
+                        <em>June 13th, 2024</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toolboxBox" style="display: none;">
+        <div class="screwGroup">
+            <img src="media/tools/screw.png" class="screw">
+            <img src="media/tools/screw.png" class="screw">
+        </div>
+        <div class="screwGroup">
+            <img src="media/tools/screw.png" class="screw">
+            <img src="media/tools/screw.png" class="screw">
+        </div>
+    </div>
+
+    <div id="toolboxContainer" style="display: none;">
+        <div id="toolboxTab">Toolbox</div>
+        <div id="toolbox">
+            <button>
+                <img src="media/tools/square.png" ignoreCursor="true">
+            </button>
+            <button>
+                <img src="media/tools/pencil.png" ignoreCursor="true">
+            </button>
+            <button>
+                <img src="media/tools/magnet.png" ignoreCursor="true">
+            </button>
+        </div>
+    </div>
+
+    <span id="footerText">Made with not linktree but my brain instead</span>
+
+    <span id="version">v0.02.11g</span>
+
+
+    <script src="DeBread.js"></script>
+    <script src="cursor.js"></script>
+    <script src="script.js"></script>
+    <script src="breadGame.js"></script>
+    <script src="toolbox.js"></script>
+    <script src="underBread.js"></script>
+</body>
+
+</html>
