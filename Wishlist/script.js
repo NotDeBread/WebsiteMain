@@ -17,59 +17,143 @@ const items = {
             amazon: {
                 name: 'Amazon',
                 address: 'https://a.co/d/4h4xDlM',
-                price: '$475'
+                price: '$409'
             }
         }
     },
-    CPU: {
-        name: 'Intel Core i7-11700K ',
-        desc: `
-            A computer CPU used to make things run faster and smoother.<br>
-            `,
-        specs: `<span style="font-weight: 700; color: red">WARNING!</span><span style="color: red"> This can only be used I have the "MSI MPG Z590" motherboard!</span>`,
-        img: 'cpu.jpg',
+    ssd: {
+        name: 'Samsung 990 PRO (SSD)',
+        desc: 'A pc component that holds storage.',
+        specs: 'Size: 2TB or 4TB',
+        img: 'ssd.png',
         tags: [
             'Tech'
         ],
-        price: 282,
+        price: '159.99 (30%-42% off)',
+        pColor: 159.99,
         links: {
             amazon: {
-                name: 'Amazon',
-                address: 'https://www.amazon.com/Intel-i7-11700K-Desktop-Processor-Unlocked/dp/B08X6ND3WP/ref=sr_1_3?crid=16RFYNV7PHVYO&keywords=intel%2Bi7%2B11700k&sprefix=intel%2Bi7%2B11%2Caps%2C136&sr=8-3&ufe=app_do%3Aamzn1.fos.17d9e15d-4e43-4581-b373-0e5c1a776d5d',
-                price: '$282'
-            }
+                name: 'Amazon (2TB)',
+                address: 'https://www.amazon.com/SAMSUNG-Computing-Workstations-MZ-V9P4T0B-AM/dp/B0BHJJ9Y77?crid=NYO66F93VA1L&dib=eyJ2IjoiMSJ9.1mBXJZAetyBSQPkhvdQlEqr8JVVQoEigc6P2NgriFq7v6UnPH3nzEAY3zfTVAW10ItrjSiZjYXx8_C6lUlVgj-4Tng6uNyQrOx_H_V5mX6n1aKFt9GU58nOmbRFlQdFVXVR-vBWgnDIZTEbhws1hwzufFjOpKMY7yZ4wXt00FVYafq1JXos2oO7YSPn-qLTiWxslFC1sPKVa74AgTN74EYp3PsyzYPTJ5aoDPmJkY_I.vSH1F85OFPNsAxF1hzEfy7kUMNW-OTGIsxssGWdYQig&dib_tag=se&keywords=samsung%2Bssd&psr=EY17&s=black-friday&sprefix=samsung%2Bss%2Cblack-friday%2C117&sr=1-1&th=1',
+                price: '$159.99'
+            },
+            otherAmazon: {
+                name: 'Amazon (4TB)',
+                address: 'https://www.amazon.com/SAMSUNG-Computing-Workstations-MZ-V9P4T0B-AM/dp/B0CHGT1KFJ?crid=NYO66F93VA1L&dib=eyJ2IjoiMSJ9.1mBXJZAetyBSQPkhvdQlEqr8JVVQoEigc6P2NgriFq7v6UnPH3nzEAY3zfTVAW10ItrjSiZjYXx8_C6lUlVgj-4Tng6uNyQrOx_H_V5mX6n1aKFt9GU58nOmbRFlQdFVXVR-vBWgnDIZTEbhws1hwzufFjOpKMY7yZ4wXt00FVYafq1JXos2oO7YSPn-qLTiWxslFC1sPKVa74AgTN74EYp3PsyzYPTJ5aoDPmJkY_I.vSH1F85OFPNsAxF1hzEfy7kUMNW-OTGIsxssGWdYQig&dib_tag=se&keywords=samsung%2Bssd&psr=EY17&s=black-friday&sprefix=samsung%2Bss%2Cblack-friday%2C117&sr=1-1&th=1',
+                price: '$269.99'
+            },
         }
     },
-    motherboard: {
-        name: 'MSI MPG Z590',
-        desc: `
-            The part of the computer that holds all of the components.<br>
-            `,
-        specs: `<span style="font-weight: 700; color: red">WARNING!</span><span style="color: red"> This can only be used I have the "Intel Core i7-11700K" CPU!</span>`,
-        img: 'motherboard.jpg',
+    legoCastle: {
+        name: 'Himeji Castle',
+        desc: '',
+        img: 'castle.webp',
+        tags: [
+            'Decor'
+        ],
+        price: 159.99,
+        links: {
+            lego: {
+                name: 'LEGO',
+                address: 'https://www.lego.com/en-us/product/himeji-castle-21060',
+                price: '$159.99'
+            },
+        }
+    },
+    ram: {
+        name: 'Corsair Vengeance RGB Pro 32GB (4x8GB) (RAM)',
+        desc: 'A pc component that holds storage.',
+        img: 'ram.png',
         tags: [
             'Tech'
         ],
-        price: 255,
+        price: 131.99,
         links: {
             amazon: {
                 name: 'Amazon',
-                address: 'https://www.amazon.com/dp/B08WCNL4WF/ref=emc_b_5_t',
-                price: '$255'
-            }
+                address: 'https://www.amazon.com/Corsair-Vengeance-PC4-28800-Desktop-Memory/dp/B08PW41WXH',
+                price: '$131.99'
+            },
+        }
+    },
+    pcCase: {
+        name: 'H5 Flow RGB (Computer Case)',
+        desc: 'A computer case to hold all of my components.',
+        specs: 'Color: Black',
+        img: 'pcCase.avif',
+        tags: [
+            'Tech'
+        ],
+        price: 124.99,
+        links: {
+            steamDeck: {
+                name: 'NZXT',
+                address: 'https://nzxt.com/product/h5-flow-rgb',
+                price: '$124.99'
+            },
         }
     },
     ultrakillSweater: {
-        name: 'ULTRAKILL Holiday sweater (pre-order)',
+        name: 'ULTRAKILL Holiday sweater',
         desc: 'Super cool sweater from one of my favorite games.',
+        specs: 'Size: Large',
         img: 'ultrakillSweater.webp',
         tags: ['Clothing'],
-        price: 80,
+        price: 100,
         links: {
             newBlood: {
                 name: 'NewBlood Store',
-                address: 'https://newbloodstore.com/products/ultrakill-christmas-sweater?variant=42303524896920',
-                price: '$79.99 '
+                address: 'https://newbloodstore.com/products/ultrakill-holiday-sweater?variant=43089826119832',
+                price: '$99.99 '
+            }
+        }
+    },
+    ruinSeekerHoodie: {
+        name: 'Ruin Seeker Hoodie',
+        desc: 'Super cool hoodie from one of my favorite games.',
+        specs: 'Size: Large',
+        img: 'ruinseeker.webp',
+        tags: ['Clothing'],
+        price: 69,
+        links: {
+            newBlood: {
+                name: 'Fangamer',
+                address: 'https://www.fangamer.com/collections/tunic/products/tunic-hoodie-ruin-seeker',
+                price: '$69 '
+            }
+        }
+    },
+    paris: {
+        name: 'Paris',
+        desc: '',
+        img: 'paris.webp',
+        tags: [
+            'Decor',
+        ],
+        price: 49.99,
+        links: {
+            amazon: {
+                name: 'LEGO',
+                address: 'https://www.lego.com/en-us/product/paris-21044',
+                price: '$49.99'
+            }
+        }
+    },
+    breadCatHoodie: {
+        name: 'Bread Cat Hoodie',
+        desc: 'A very cool hoodie.',
+        img: 'breadcathoodie.webp',
+        specs: 'Size: Large',
+        tags: [
+            'Clothing'
+        ],
+        price: '40 (20% off)',
+        pColor: 40,
+        links: {
+            amazon: {
+                name: 'Cat Warehouse',
+                address: 'https://www.catwarehouse.com/products/breadcat-hoodie?variant=41531230060734',
+                price: '$40'
             }
         }
     },
@@ -81,78 +165,13 @@ const items = {
         tags: [
             'Clothing'
         ],
-        price: 28,
+        price: '21 (30% off)',
+        pColor: 21,
         links: {
             amazon: {
                 name: 'Cat Warehouse',
                 address: 'https://www.catwarehouse.com/products/breadcat-tee-black?variant=41581729579198',
-                price: '$28'
-            }
-        }
-    },
-    theStanleyParable: {
-        name: 'The Stanley Parable: Ultra Deluxe',
-        desc: '',
-        specs: '"You will play as Stanley, and you will not play as Stanley. You will make a choice, and you will become powerless. You are not here to win. The Stanley Parable is a game that plays you."',
-        img: 'theStanleyParable.jpg',
-        tags: [
-            'Game',
-            'Digital'
-        ],
-        price: 25,
-        links: {
-            steam: {
-                name: 'Steam',
-                address: 'https://store.steampowered.com/app/1703340/The_Stanley_Parable_Ultra_Deluxe/',
-                price: '$25'
-            },
-            amazon: {
-                name: 'Trailer',
-                address: 'https://youtu.be/0QyA9nv23wM?si=hVz6DyVyzlCVvgBF',
-            }
-        }
-    },
-    outerWilds: {
-        name: 'Outer Wilds',
-        desc: 'Named Game of the Year 2019 by Giant Bomb, Polygon, Eurogamer, and The Guardian, Outer Wilds is a critically-acclaimed and award-winning open world mystery about a solar system trapped in an endless time loop.',
-        specs: '',
-        img: 'outerWilds.jpg',
-        tags: [
-            'Game',
-            'Digital'
-        ],
-        price: 25,
-        links: {
-            steam: {
-                name: 'Steam',
-                address: 'https://store.steampowered.com/app/753640/Outer_Wilds/',
-                price: '$25'
-            },
-            amazon: {
-                name: 'Trailer',
-                address: 'https://youtu.be/d6LGnVCL1_A?si=7U1JVlaxxgeEzyjJ',
-            }
-        }
-    },
-    lethalCompany: {
-        name: 'Lethal Company',
-        desc: 'A co-op horror about scavenging at abandoned moons to sell scrap to the Company.',
-        specs: '',
-        img: 'lethalCompany.jpg',
-        tags: [
-            'Game',
-            'Digital'
-        ],
-        price: 10,
-        links: {
-            steam: {
-                name: 'Steam',
-                address: 'https://store.steampowered.com/app/1966720/Lethal_Company/',
-                price: '$10'
-            },
-            amazon: {
-                name: 'Trailer',
-                address: 'https://youtu.be/m5RB0Ej1mFg?si=KaifEFoYHHwKPhmN',
+                price: '$21'
             }
         }
     },
@@ -163,32 +182,33 @@ const items = {
         tags: [
             'Decor'
         ],
-        price: 3,
+        price: '4.40',
+        pColor: 4.4,
         links: {
             amazon: {
                 name: 'Streamlabs',
                 address: 'https://streamlabs.com/notdebread/merch/3266686',
-                price: '$3.40'
+                price: '$4.40'
             }
         }
     },
-    breadCatSticker: {
-        name: 'Bread Cat Sticker',
-        desc: 'A very cool sticker.',
-        img: 'breadCatSticker.png',
-        tags: [
-            'Decor'
-        ],
-        price: '2.50',
-        pColor: 2.5,
-        links: {
-            amazon: {
-                name: 'Cat Warehouse',
-                address: 'https://www.catwarehouse.com/collections/all/products/bread-cat-sticker',
-                price: '$2.50'
-            }
-        }
-    },
+    // breadCatSticker: {
+    //     name: 'Bread Cat Sticker',
+    //     desc: 'A very cool sticker.',
+    //     img: 'breadCatSticker.png',
+    //     tags: [
+    //         'Decor'
+    //     ],
+    //     price: '2.50',
+    //     pColor: 2.5,
+    //     links: {
+    //         amazon: {
+    //             name: 'Cat Warehouse',
+    //             address: 'https://www.catwarehouse.com/collections/all/products/bread-cat-sticker',
+    //             price: '$2.50'
+    //         }
+    //     }
+    // },
 }
 
 for(let item in items) {
@@ -217,9 +237,9 @@ for(let item in items) {
     doge('itemContainer').appendChild(itemDiv)
 
     if(typeof items[item].price === 'number') {
-        doge(`${item}Price`).style.backgroundColor = `hsl(${150 - items[item].price / 3}, 100%, 65%)`
+        doge(`${item}Price`).style.backgroundColor = `hsl(${150 - items[item].price / 2}, 100%, 65%)`
     } else {
-        doge(`${item}Price`).style.backgroundColor = `hsl(${150 - items[item].pColor / 3}, 100%, 65%)`
+        doge(`${item}Price`).style.backgroundColor = `hsl(${150 - items[item].pColor / 2}, 100%, 65%)`
     }
 
     for(tag in items[item].tags) {
@@ -247,7 +267,7 @@ function openMenu(item) {
     doge('menuContainer').style.display = 'flex'
     doge('menuHeading').innerText = item.name
     if(item.desc && item.specs) {
-        doge('menuDesc').innerHTML = `${item.desc}<br>${item.specs}`
+        doge('menuDesc').innerHTML = `${item.desc}<br><div class="menuDesc">${item.specs}</div>`
     } else if(item.desc) {
         doge('menuDesc').innerHTML = item.desc
     } else if(item.specs) {

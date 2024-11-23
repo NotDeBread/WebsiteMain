@@ -78,6 +78,11 @@ a:hover {
   align-items: center;
 }
 
+.menuDesc {
+  margin-top: 10px;
+  color: yellow;
+}
+
 #menuImg {
   width: 100%;
   height: 250px;
@@ -222,6 +227,7 @@ a:hover {
   align-items: center;
   flex-direction: column;
   margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 #giftcardTitle {
@@ -241,25 +247,6 @@ a:hover {
 
 #giftcards a img {
   border-radius: 15px;
-}
-
-#giftcards a:nth-child(1) {
-  transform: rotate(-20deg) translateX(50px) translateY(40px);
-  z-index: 3;
-}
-
-#giftcards a:nth-child(2) {
-  z-index: 2;
-}
-
-#giftcards a:nth-child(3) {
-  z-index: 1;
-  transform: rotate(20deg) translateX(-50px) translateY(40px);
-}
-
-#giftcards a:hover {
-  translate: 0px -50px;
-  z-index: 4;
 }
 
 .footer {
