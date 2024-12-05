@@ -29,7 +29,7 @@ const items = {
         tags: [
             'Tech'
         ],
-        price: '159.99 (30%-42% off)',
+        price: '160 (36% off)',
         pColor: 159.99,
         links: {
             amazon: {
@@ -51,7 +51,7 @@ const items = {
         tags: [
             'Decor'
         ],
-        price: 159.99,
+        price: 160,
         links: {
             lego: {
                 name: 'LEGO',
@@ -67,7 +67,8 @@ const items = {
         tags: [
             'Tech'
         ],
-        price: 131.99,
+        price: '132 (6% off)',
+        pColor: 131.99,
         links: {
             amazon: {
                 name: 'Amazon',
@@ -84,7 +85,7 @@ const items = {
         tags: [
             'Tech'
         ],
-        price: 124.99,
+        price: 125,
         links: {
             steamDeck: {
                 name: 'NZXT',
@@ -99,12 +100,13 @@ const items = {
         specs: 'Size: Large',
         img: 'ultrakillSweater.webp',
         tags: ['Clothing'],
-        price: 100,
+        price: '90 (SALE)',
+        pColor: 90,
         links: {
             newBlood: {
                 name: 'NewBlood Store',
                 address: 'https://newbloodstore.com/products/ultrakill-holiday-sweater?variant=43089826119832',
-                price: '$99.99 '
+                price: '$89.99 '
             }
         }
     },
@@ -130,7 +132,7 @@ const items = {
         tags: [
             'Decor',
         ],
-        price: 49.99,
+        price: 50,
         links: {
             amazon: {
                 name: 'LEGO',
@@ -165,13 +167,63 @@ const items = {
         tags: [
             'Clothing'
         ],
-        price: '21 (30% off)',
-        pColor: 21,
+        price: 30,
         links: {
             amazon: {
                 name: 'Cat Warehouse',
                 address: 'https://www.catwarehouse.com/products/breadcat-tee-black?variant=41581729579198',
-                price: '$21'
+                price: '$30'
+            }
+        }
+    },
+    cards: {
+        name: 'Balatro playing cards (pre-order)',
+        desc: 'Playing cards based on my favorite roguelike game.',
+        img: 'cards.webp',
+        specs: 'This is only for preorder, it will be shipped in March of 2025',
+        tags: [
+            'Misc'
+        ],
+        price: 16,
+        links: {
+            fangamer: {
+                name: 'Fangamer',
+                address: 'https://www.fangamer.com/products/balatro-playing-cards',
+                price: '$16'
+            }
+        }
+    },
+    v1pin: {
+        name: 'ULTRAKILL V1 Pin (pre-order)',
+        desc: 'A pin of the main character from my favorite game.',
+        img: 'pin.webp',
+        specs: 'This is only for preorder, it will be shipped in early 2025',
+        tags: [
+            'Decor'
+        ],
+        price: 9.99,
+        links: {
+            fangamer: {
+                name: 'New Blood store',
+                address: 'https://newbloodstore.com/products/ultrakill-v1-pin',
+                price: '$9.99'
+            }
+        }
+    },
+    eddieSticker: {
+        name: 'Eddie Sticker',
+        desc: '',
+        img: 'eddieSticker.png',
+        tags: [
+            'Decor'
+        ],
+        price: '4.80',
+        pColor: 4.8,
+        links: {
+            amazon: {
+                name: 'Streamlabs',
+                address: 'https://streamlabs.com/notdebread/merch/5475614',
+                price: '$4.80'
             }
         }
     },
@@ -237,9 +289,9 @@ for(let item in items) {
     doge('itemContainer').appendChild(itemDiv)
 
     if(typeof items[item].price === 'number') {
-        doge(`${item}Price`).style.backgroundColor = `hsl(${150 - items[item].price / 2}, 100%, 65%)`
+        doge(`${item}Price`).style.backgroundColor = `hsl(${150 - items[item].price / 1.25}, 100%, 65%)`
     } else {
-        doge(`${item}Price`).style.backgroundColor = `hsl(${150 - items[item].pColor / 2}, 100%, 65%)`
+        doge(`${item}Price`).style.backgroundColor = `hsl(${150 - items[item].pColor / 1.25}, 100%, 65%)`
     }
 
     for(tag in items[item].tags) {
