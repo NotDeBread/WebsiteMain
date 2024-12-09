@@ -60,40 +60,6 @@ const items = {
             },
         }
     },
-    ram: {
-        name: 'Corsair Vengeance RGB Pro 32GB (4x8GB) (RAM)',
-        desc: 'A pc component that holds storage.',
-        img: 'ram.png',
-        tags: [
-            'Tech'
-        ],
-        price: '132 (6% off)',
-        pColor: 131.99,
-        links: {
-            amazon: {
-                name: 'Amazon',
-                address: 'https://www.amazon.com/Corsair-Vengeance-PC4-28800-Desktop-Memory/dp/B08PW41WXH',
-                price: '$131.99'
-            },
-        }
-    },
-    pcCase: {
-        name: 'H5 Flow RGB (Computer Case)',
-        desc: 'A computer case to hold all of my components.',
-        specs: 'Color: Black',
-        img: 'pcCase.avif',
-        tags: [
-            'Tech'
-        ],
-        price: 125,
-        links: {
-            steamDeck: {
-                name: 'NZXT',
-                address: 'https://nzxt.com/product/h5-flow-rgb',
-                price: '$124.99'
-            },
-        }
-    },
     ultrakillSweater: {
         name: 'ULTRAKILL Holiday sweater',
         desc: 'Super cool sweater from one of my favorite games.',
