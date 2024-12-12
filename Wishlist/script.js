@@ -27,7 +27,7 @@ const items = {
         specs: 'Size: 2TB or 4TB',
         img: 'ssd.png',
         tags: [
-            'Tech'
+            'PC Component'
         ],
         price: '160 (36% off)',
         pColor: 159.99,
@@ -66,13 +66,12 @@ const items = {
         specs: 'Size: Large',
         img: 'ultrakillSweater.webp',
         tags: ['Clothing'],
-        price: '90 (SALE)',
-        pColor: 90,
+        price: 100,
         links: {
             newBlood: {
                 name: 'NewBlood Store',
                 address: 'https://newbloodstore.com/products/ultrakill-holiday-sweater?variant=43089826119832',
-                price: '$89.99 '
+                price: '$99.99 '
             }
         }
     },
@@ -139,6 +138,24 @@ const items = {
                 name: 'Cat Warehouse',
                 address: 'https://www.catwarehouse.com/products/breadcat-tee-black?variant=41581729579198',
                 price: '$30'
+            }
+        }
+    },
+    fan: {
+        name: 'F240 RGB Core',
+        desc: 'Computer fans.',
+        img: 'fans.png',
+        specs: 'Color: Black',
+        tags: [
+            'PC Component'
+        ],
+        pColor: 30,
+        price: '30 (45% off)',
+        links: {
+            amazon: {
+                name: 'NZXT',
+                address: 'https://nzxt.com/product/f240-rgb-core',
+                price: '$29.99'
             }
         }
     },
