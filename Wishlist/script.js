@@ -21,6 +21,24 @@ const items = {
             }
         }
     },
+    printer: {
+        name: '3D Printer (Bambu Lab A1 mini)',
+        desc: 'A high quality 3D printer.',
+        specs: 'This product needs printing filiment to be used.',
+        img: 'printer.webp',
+        tags: [
+            'Tech'
+        ],
+        price: '200 (SALE)',
+        pColor: 200,
+        links: {
+            steamDeck: {
+                name: 'Bambulab',
+                address: 'https://store.bambulab.com/products/a1-mini?skr=yes',
+                price: '$199.00'
+            },
+        }
+    },
     ssd: {
         name: 'Samsung 990 PRO (SSD)',
         desc: 'A pc component that holds storage.',
@@ -156,6 +174,24 @@ const items = {
                 name: 'NZXT',
                 address: 'https://nzxt.com/product/f240-rgb-core',
                 price: '$29.99'
+            }
+        }
+    },
+    filament: {
+        name: '3D printer filament',
+        desc: 'Materal a 3D printer uses to print.',
+        img: 'filament.png',
+        specs: 'Color: Any neutral colors (white, grey, black)<br>-Most filaments should work, just in case, make sure it is PLA filament.<br>-To use this I need a 3D printer, preferably the one listed on this wishlist.',
+        tags: [
+            'Misc'
+        ],
+        price: '~18',
+        pColor: 18,
+        links: {
+            fangamer: {
+                name: 'Elegoo',
+                address: 'https://us.elegoo.com/pages/elegoo-pla-3d-printer-filament',
+                price: '~$18'
             }
         }
     },
