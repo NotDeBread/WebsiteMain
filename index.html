@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="breadGame.css">
     <link rel="stylesheet" href="underBread.css">
+    <link rel="stylesheet" href="fish.css">
     <title>DeBread's Space</title>
 </head>
 
 <body>
+    <div id="pixelOverlay"></div>
+
     <div id="loadingScreen">
-        <span>LOADING...</span><br>
-        <span id="texturesLoaded">0/0</span>
-        <div id="loadingBarContainer">
-            <div id="loadingBar"></div>
-        </div>
-        <button onclick="doge('loadingScreen').style.display = 'none'" style="margin-top: 50px;">Skip Loading...</button>
+        <span class="flowText">loading...</span>
+        <span id="texturesLoaded" style="font-size: 0.5em;">0%</span>
+        <img src="media/loader.png" width="100">
     </div>
 
     <span id="cursorText"></span>
@@ -118,179 +118,474 @@
         </div>
     </div>
 
-    <div id="header">
+    <div id="mainContainer">
         <div id="headerText">
-            <span style="font-size: 1.5em;" class="chunk">Welcome to</span><br>
-            <em style="font-size: 3em; font-weight: 900;" id="titleTextContainer" class="chunk"></em><br>
-            <span style="font-size: 1.5em; color: grey;" class="chunk">I make stuff</span><br>
+            <span style="font-size: 1.5em;" class="chunk">Welcome to</span>
+            <em style="font-size: 3em; font-weight: 900; width: fit-content;" id="titleTextContainer" class="chunk"></em>
         </div>
-        <div id="headerVideoContainer">
-            <video id="headerBG" autoplay loop muted tabindex="-1">
-                <source src="media/bg.mp4" type="video/mp4">
-            </video>
+        <div style="display: flex; gap: 9px; height: 400px;" id="innerMainContainer">
+            <div style="display: flex; flex-direction: column; gap: 9px;" class="sideContainer">
+                <div class="genericBox" style="width: 250px; height: 100%;">
+                    <div class="coolLineContainer">
+                        <span style="font-size: 1.25em; font-weight: 700; white-space: nowrap;">About me</span>
+                        <div class="coolLine"></div>
+                    </div>
+                    <span>I'm a 17 year-old mediocre frontend web developer who makes silly games.</span><br>
+                    <a style="position: absolute; bottom: 10px; right: 10px;" onclick="openCenterMenu('gamesContainer', 'aboutMeContainer', false)">Learn
+                        more...</a>
+                </div>
+                <div class="exclusiveRow">
+                    <div class="genericBox" style="width: 250px;">
+                        <div class="coolLineContainer">
+                            <span style="font-size: 1.25em; font-weight: 700">Gallery</span>
+                            <div class="coolLine"></div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; margin-top: 2px;">
+                            <button style="width: 50%;" onclick="openGallery('pixel')">Pixel Art</button>
+                            <button style="width: 50%;" onclick="openGallery('vector')">Vector Art</button>
+                            <button style="width: 50%;" onclick="openGallery('goober')">Goober Art</button>
+                            <button style="width: 50%;" onclick="openGallery('misc')">Misc Art</button>
+                        </div>
+                    </div>
+                    <div class="genericBox" style="width: 250px;">
+                        <div class="coolLineContainer">
+                            <span style="font-size: 1.25em; font-weight: 700">Socials</span>
+                            <div class="coolLine"></div>
+                        </div>
+                        <a href="https://twitter.com/notdebread">Twitter</a><br>
+                        <a href="https://discord.gg/ENH9NZb6ZC">Discord Server</a><br>
+                        <a href="https://youtube.com/notdebread">YouTube Channel</a><br>
+                        <a href="https://github.com/notdebread">GitHub</a><br>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 9px; height: fit-content;">
+                <div class="genericBox" style="width: 750px;" id="centerContainer">
+                    <div id="gamesContainer">
+                        <div class="coolLineContainer">
+                            <span style="font-size: 1.25em; font-weight: 700">Projects</span>
+                            <div class="coolLine"></div>
+                        </div>
+                        <div style="display: flex; gap: 9px;" class="genericGameRow">
+                            <div class="game" game="">
+                                <div class="comingSoon" style="rotate: -9deg; translate: -5px 20px;">
+                                    <span>COMING SOON...</span>
+                                </div>
+                                <div class="gameInfo">
+                                    <span>Annie Accumulator</span><br>
+                                    <em>Winnie Accumulator, buy way better.</em>
+                                </div>
+                                <div class="gameBG" style="background-image: url(media/gameBGs/balatro.png);"></div>
+                            </div>
+                            <!-- <div class="game mobileIncompatible" game="">
+                                <div class="comingSoon" style="rotate: -9deg;">
+                                    <span>COMING SOON...</span>
+                                </div>
+                                <div class="gameInfo">
+                                    <span>DeBread's Retextures</span><br>
+                                    <em>A Balatro mod that changes some of the card and joker textures</em>
+                                </div>
+                                <div class="gameBG" style="background-image: url(media/gameBGs/balatro.png);"></div>
+                            </div> -->
+                            <div class="game" game="">
+                                <div class="comingSoon">
+                                    <span>COMING SOON...</span>
+                                </div>
+                                <div class="gameInfo">
+                                    <span>DEBREAD ARCHIVES</span><br>
+                                    <em>Browse through all of my unfinished projects</em>
+                                </div>
+                                <div class="gameBG" style="background-image: url(media/guy2.png);"></div>
+                            </div>
+                            <div class="game mobileIncompatible" game="GooberShooter">
+                                <div class="gameInfo">
+                                    <span>Goober Shooter</span><br>
+                                    <em>Top-down shooter but awesome.</em>
+                                </div>
+                                <div class="gameBG" style="background-image: url(media/gameBGs/gooberShooter.png);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 9px; margin-top: 9px;" class="genericGameRow">
+                            <!-- <div class="game" game="Eddie-Accumulator" style="height: 100px;">
+                                <div class="gameInfo">
+                                    <span>Eddie Accumulator</span><br>
+                                    <em>Cookie Clicker, but better.</em>
+                                </div>
+                                <div class="gameBG" style="background-image: url(media/gameBGs/eddieAccumulator.png);"></div>
+                            </div> -->
+                            <div class="game" game="WinnieAccumulator" style="height: 100px;">
+                                <div class="gameInfo">
+                                    <span>Winnie Accumulator</span><br>
+                                    <em>Eddie Accumulator, but better.</em>
+                                </div>
+                                <div class="gameBG" style="background-image: url(media/gameBGs/winnieAccumulator.png);"></div>
+                            </div>
+                            <div class="game" game="WinnieAccumulator" style="height: 100px;">
+                                <div class="gameInfo">
+                                    <span>Math Game</span><br>
+                                    <em>A math game for my freshman algebra final.</em>
+                                </div>
+                                <div class="gameBG" style="background-image: url(media/gameBGs/mathGame.png);"></div>
+                            </div>
+                            <div class="game" game="PixelGenerator" style="height: 100px;">
+                                <div class="gameInfo">
+                                    <span>Pixel Generator</span><br>
+                                    <em>Generate random grids of pixels I guess.</em>
+                                </div>
+                                <div class="gameBG" style="background-image: url(media/gameBGs/pixelGenerator.png);"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="aboutMeContainer">
+                        <div class="coolLineContainer">
+                            <span style="font-size: 1.25em; font-weight: 700; white-space: nowrap;">About Me</span>
+                            <div class="coolLine"></div>
+                        </div>
+                        <span>Heya, I'm DeBread, Welcome to my site! I'm just a teen who resides in Missouri who somehow got into web development. Below are
+                            some topics that I'm interested in</span><br>
+
+                        <span style="font-size: 1.25em; font-weight: 700;">Computer hardware</span><br>
+                        <span>Ever since I got my first (pre-built) pc back in 2020 I've been facinated about how computers worked. Over the years I've slowly
+                            been collect parts and upgrading my PC which helped me learn what each part does. Currently I'm enrolled in a special class,
+                            Computer Service Technology, where I leave highschool for half the day to build and learn about computer hardware and
+                            software.</span><br>
+
+                        <span style="font-size: 1.25em; font-weight: 700;">Web development</span><br>
+                        <span>Back in 2021, one of my friends showed me his website, I was inspired, deciding to learn web development for myself. With this new
+                            knowledge and the help of said friend, I made my first website; the <a href="EddieWebsite/">Eddie Site</a>.<br>Awhile after that, I
+                            decided to learn JavaScript to make more interesting and interactive websites, my first JS project being <a
+                                href="Eddie-Accumulator/" tooltip="true" tooltipImg="media/oldEddieAccumulator.gif"
+                                tooltipCaption="Early development footage of Eddie Accumulator">Eddie Accumulator</a>.</span><br>
+
+                        <span style="font-size: 1.25em; font-weight: 700;">Interests</span><br>
+                        <span>For my interests and stuff, click <a onclick="openCenterMenu('aboutMeContainer', 'interestsContainer', false)">here</a>.</span>
+
+                        <button id="backButton" onclick="openCenterMenu('aboutMeContainer', 'gamesContainer', true)">⮜</button>
+                        <div style="display: flex; align-items: center; position: absolute; bottom: 10px; left: 10px;">
+                            <img src="media/guy2.png" width="150" id="guy2" ignoreCursor="true">
+                            <span><- This is my guy</span>
+                                    <span style="position: absolute; bottom: 10px; left: 100px; font-size: 0.75em; opacity: 0.25;">(Drawn by plonk)</span>
+                        </div>
+                    </div>
+                    <div id="interestsContainer">
+                        <div class="coolLineContainer">
+                            <em style="font-size: 1.25em; white-space: nowrap; color: grey;">About me > </em><span
+                                style="font-size: 1.25em; font-weight: 700; white-space: nowrap;">Interests</span>
+                            <div class="coolLine"></div>
+                        </div>
+                        <div class="interestBoxRow">
+                            <div class="interestBox">
+                                <div class="coolLineContainer">
+                                    <span style="font-size: 1.25em; font-weight: 700; white-space: nowrap;">Games</span>
+                                    <div class="coolLine"></div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <button class="interestGame" onclick="window.open('https://www.playbalatro.com/', '_blank')">
+                                        <img src="media/interests/balatro.webp" width="250px">
+                                    </button>
+                                    <button class="interestGame" onclick="window.open('https://store.steampowered.com/app/1229490/ULTRAKILL/', '_blank')">
+                                        <img src="media/interests/ultrakill.png" width="250px">
+                                    </button>
+                                    <button class="interestGame" onclick="window.open('https://store.steampowered.com/app/553420/TUNIC/', '_blank')">
+                                        <img src="media/interests/tunic.png" width="250px">
+                                    </button>
+
+                                    <button class="interestGame" onclick="window.open('https://store.steampowered.com/app/2701030/MINDWAVE/'), '_blank'">
+                                        <img src="media/interests/mindwave.webp" width="250px">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="interestBoxRow" style="margin-top: 5px;">
+                            <div class="interestBox">
+                                <div class="coolLineContainer">
+                                    <span style="font-size: 1.25em; font-weight: 700; white-space: nowrap;">Programming Languages</span>
+                                    <div class="coolLine"></div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e44d25"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-html5">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z" />
+                                        <path d="M15.5 8h-7l.5 4h6l-.5 3.5l-2.5 .75l-2.5 -.75l-.1 -.5" />
+                                    </svg>
+                                    <span>HTML</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2d53e5"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-css3">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z" />
+                                        <path d="M8.5 8h7l-4.5 4h4l-.5 3.5l-2.5 .75l-2.5 -.75l-.1 -.5" />
+                                    </svg>
+                                    <span>CSS</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f7e025"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-javascript">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M20 4l-2 14.5l-6 2l-6 -2l-2 -14.5z" />
+                                        <path d="M7.5 8h3v8l-2 -1" />
+                                        <path d="M16.5 8h-2.5a.5 .5 0 0 0 -.5 .5v3a.5 .5 0 0 0 .5 .5h1.423a.5 .5 0 0 1 .495 .57l-.418 2.93l-2 .5" />
+                                    </svg>
+                                    <span>JavaScript</span>
+                                </div>
+                                <em style="position: absolute; bottom: 5px; right: 5px; color: grey;">get a load of this guy</em>
+                            </div>
+                            <div class="interestBox">
+                                <div class="coolLineContainer">
+                                    <span style="font-size: 1.25em; font-weight: 700; white-space: nowrap;">Colors</span>
+                                    <div class="coolLine"></div>
+                                </div>
+                                <div id="colorsContainer">
+                                    <color hex="#22213b" rgb="34, 33, 59"></color>
+                                    <color hex="#7d59ff" rgb="125, 89, 255"></color>
+                                    <color hex="#6effdb" rgb="110, 255, 219"></color>
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                            <div class="interestBox">
+                                <div class="coolLineContainer">
+                                    <span style="font-size: 1.25em; font-weight: 700; white-space: nowrap;">Animals</span>
+                                    <div class="coolLine"></div>
+                                </div>
+                                <div><span>🦊 - Foxes</span></div>
+                                <div><span>🦝 - Raccoons</span></div>
+                                <div><span>🐦‍⬛ - Crows</span></div>
+                            </div>
+                        </div>
+                        <div class="interestBoxRow">
+                            <div class="interestBox" style="margin-top: 5px;">
+                                <div class="coolLineContainer">
+                                    <span style="font-size: 1.25em; font-weight: 700; white-space: nowrap;">Current Top Songs</span>
+                                    <div class="coolLine"></div>
+                                </div>
+
+                                <div id="musicContainer">
+                                    <!-- <div class="musicWidget">
+                                        <img class="musicWidgetAlbum" src="media/guy2.png">
+                                        <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                                            <div style="line-height: 1;">
+                                                <span class="musicWidgetName">Some name</span><br>
+                                                <span class="musicWidgetArtist">Some author</span>
+                                            </div>
+                                            <div>
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <span>0:00</span>
+                                                    <button class="musicWidgetControll">⏵</button>
+                                                    <span>0:69</span>
+                                                </div>
+                                                <div class="musicWidgetProgressContainer">
+                                                    <div class="musicWidgetProgress">
+                                                        <div class="musicWidgetProgressBar"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <em style="color: grey;">My music taste sucks btw - Music here will not appear until loaded</em>
+                                    <em style="color: grey;">Scroll on a song to change its volume</em>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="backButton" onclick="openCenterMenu('interestsContainer', 'aboutMeContainer', false)">⮜</button>
+                        <button id="backButton" onclick="openCenterMenu('interestsContainer', 'gamesContainer', true)" style="right: 50px;">✦</button>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 9px; height: 400px;" class="sideContainer">
+                <div class="exclusiveRow">
+                    <div class="genericBox mobileIncompatible" style="width: 250px; height: 100%;">
+                        <div class="coolLineContainer">
+                            <span style="font-size: 1.25em; font-weight: 700">Chat</span>
+                            <div class="coolLine"></div>
+                        </div>
+                        <iframe src="https://www3.cbox.ws/box/?boxid=3543009&boxtag=xXJS81" width="240" height="200" allowtransparency="yes" allow="autoplay"
+                            frameborder="0" marginheight="0" marginwidth="0" scrolling="auto" class="noCursor"
+                            style="backdrop-filter: blur(10px); padding: 5px; outline: 1px solid white;"></iframe>
+                    </div>
+                    <div class="genericBox mobileIncompatible" style="width: 250px; height: 100%;">
+                        <div class="coolLineContainer">
+                            <span style="font-size: 1.25em; font-weight: 700">Settings</span>
+                            <div class="coolLine"></div>
+                        </div>
+                        <div class="setting">
+                            <div class="checkbox" checked="true" setting="stars"></div>
+                            <span>Stars</span>
+                        </div>
+                        <div class="setting">
+                            <div class="checkbox" checked="false" setting="floatyBoxes"></div>
+                            <span>Floaty boxes</span>
+                        </div>
+                        <div class="setting">
+                            <div class="checkbox" checked="true" setting="crtLines"></div>
+                            <span>CRT lines</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <span id="guyCounter">0</span>
+    </div>
+
+    <a id="strawContainer" href="https://debread.straw.page/" class="mobileIncompatible">
+        <div id="innerStrawContainer">
+            <div id="strawBar">
+                <span style="margin-left: 10px;">• • •</span>
+                <span style="font-size: 0.75em; margin-right: 10px;">debread.straw.page</span>
+            </div>
+            <div id="strawTextContainer">
+                <span id="strawText">send me a drawing!</span>
+            </div>
+            <em>(via straw.page)</em>
+            <img src="media/guy3.png" id="strawGuy" ignoreCursor="true">
+        </div>
+    </a>
+
+    <span id="guyCounter" class="mobileIncompatible">0</span>
+    <div id="guyContainer" class="mobileIncompatible">
         <img src="media/guy.png" id="guy" ignoreCursor="true" onclick="guyClick()" class="chunk">
     </div>
 
-    <div id="main">
-        <div id="container2">
-            <div id="container0">
-                <div class="contentBox">
-                    <span style="font-size: 1.25em; font-weight: 700">Heya</span><br>
-                    <span>I'm a 17 year-old mediocre frontend</span>
-                    <span>web developer who makes silly</span>
-                    <span>games.</span>
+    <!-- <a onclick="doge('fishingContainer').style.display = 'flex'"
+        style="position: absolute; left: 125px; bottom: 25px;scale: 2 0.8; rotate: 9deg; font-size: 3em;" class="mobileIncompatible">FISH !!!!</a> -->
+
+    <div id="fishingContainer" class="noCursor">
+        <div id="fishCloseButton" onclick="doge('fishingContainer').style.display='none'">X</div>
+        <div id="fishMenuButtons">
+            <div class="fishMenuButton" onclick="toggleFishMenuContainer('Inventory')">
+                <img src="media/fishing/inventory.png" width="32"></img>
+            </div>
+            <div class="fishMenuButton" onclick="toggleFishMenuContainer('Collection')">
+                <img src="media/fishing/collection.png" width="32"></img>
+            </div>
+        </div>
+        <div id="fishMenuContainer">
+            <div class="fishMenu" id="fishMenuCollection">
+                <div class="fishMenuHeader">
+                    <span>Collection - unfinished</span>
+                    <span>0/0</span>
                 </div>
-                <div class="contentBox">
-                    <span style="font-size: 1.25em; font-weight: 700">Socials</span><br>
-                    <a href="https://discord.gg/ENH9NZb6ZC">Discord Server</a><br>
-                    <a href="https://twitter.com/notdebread">Twitter</a><br>
-                    <a href="https://youtube.com/notdebread">YouTube Channel</a><br>
-                    <a href="https://github.com/notdebread">GitHub</a><br>
-                </div>
-                <div class="contentBox" style="width: 350px; max-width: 350px;">
-                    <span style="font-size: 1.25em; font-weight: 700">Gallery</span><br>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-                        <button style="width: 150px;" onclick="openGallery('pixel')">Pixel Art</button>
-                        <button style="width: 150px;" onclick="openGallery('vector')">Vector Art</button>
-                        <button style="width: 150px;" onclick="openGallery('goober')">Goober Art</button>
-                        <button style="width: 150px;" onclick="openGallery('misc')">Misc Art</button>
-                        <!-- <button style="width: 150px;" onclick="openGallery('notebook')">Notebook Doodles</button> -->
-                        <!-- <button style="width: 100px;">Misc</button> -->
-                    </div>
+                <div id="collectionContainer">
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
                 </div>
             </div>
-            <div id="container3">
-                <div class="contentBox" id="gameBox">
-                    <span style="font-size: 1.25em; font-weight: 700">Games</span><br>
-                    <div class="gameButtons">
-                        <div class="game" game="GooberShooter">
-                            <div class="gameInfo">
-                                <span>Goober Shooter</span><br>
-                                <em>Top-down shooter but awesome.</em>
-                            </div>
-                            <div class="gameBG" style="background-image: url(media/gameBGs/gooberShooter.png);"></div>
-                        </div>
-                        <div class="game" game="WinnieAccumulator">
-                            <div class="gameInfo">
-                                <span>Winnie Accumulator</span><br>
-                                <em>Eddie Accumulator, but better.</em>
-                            </div>
-                            <div class="gameBG" style="background-image: url(media/gameBGs/winnieAccumulator.png);"></div>
-                        </div>
-                        <div class="game" game="Eddie-Accumulator">
-                            <div class="gameInfo">
-                                <span>Eddie Accumulator</span><br>
-                                <em>Cookie Clicker, but better.</em>
-                            </div>
-                            <div class="gameBG" style="background-image: url(media/gameBGs/eddieAccumulator.png);"></div>
-                        </div>
-                        <!-- <div class="game mobileIncompatible" game="NotJSAB">
-                            <div class="gameInfo">
-                                <span>Not JSAB</span><br>
-                                <em>It's not JSAB.</em>
-                            </div>
-                            <div class="gameBG" style="background-image: url(media/gameBGs/notJSAB.png);"></div>
-                        </div> -->
-                        <div class="game" game="PressTheButton">
-                            <div class="gameInfo">
-                                <span>Press The Button</span><br>
-                                <em>Carpal tunnel simulator.</em>
-                            </div>
-                            <div class="gameBG" style="background-image: url(media/gameBGs/pressTheButton.png);"></div>
-                        </div>
-                    </div>
-                    <div class="gameButtons mobileIncompatible" style="margin-top: 10px;">
-                        <div class="game" style="height: 75px; line-height: 1;" game="MathGame">
-                            <div class="gameInfo">
-                                <span>Math Game</span><br>
-                                <em>A math game for my freshman algebra final.</em>
-                            </div>
-                            <div class="gameBG" style="background-image: url(media/gameBGs/mathGame.png);"></div>
-                        </div>
-                        <div class="game" style="height: 75px; line-height: 1;" game="RandomSentenceGenerator">
-                            <div class="gameInfo">
-                                <span>Random Sentence Generator</span><br>
-                                <em>Generate random sentences!</em>
-                            </div>
-                            <div class="gameBG" style="background-image: url(media/gameBGs/randomSentenceGenerator.png);"></div>
-                        </div>
-                        <div class="game mobileIncompatible" style="height: 75px; line-height: 1;" game="PixelGenerator">
-                            <div class="gameTag">Updated!</div>
-                            <div class="gameInfo">
-                                <span>Pixel Generator</span><br>
-                                <em>Generate random grids of pixels I guess.</em>
-                            </div>
-                            <div class="gameBG" style="background-image: url(media/gameBGs/pixelGenerator.png);"></div>
-                        </div>
-                    </div>
+            <div class="fishMenu" id="fishMenuInventory">
+                <div class="fishMenuHeader">
+                    <span>Inventory - unfinished</span>
+                    <span>0</span>
+                </div>
+                <div id="collectionContainer">
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+                    <div class="collectionFish"></div>
+
                 </div>
             </div>
         </div>
-        <div id="container1">
-            <div class="contentBox" style="width: 350px; max-width: 350px; height: 450px; overflow-y: scroll; scrollbar-width: thin;">
-                <span style="font-size: 1.25em; font-weight: 700; margin-bottom: 50px;">News</span><br>
-                <div id="newsContainer">
-                    <div class="news">
-                        <span ignoreCursor="true">Goober Shooter released</span>
-                        <span ignoreCursor="true">
-                            After six months Goober Shooter is finally released! You can play it <a href="/GooberShooter/">Here.</a>
-                        </span>
-                        <em>August 20th, 2024</em>
+        <div id="fishDisplayContainerContainer">
+            <div id="fishDisplayContainer">
+                <div id="fishDisplay">
+                    <span id="fishDisplayTitle">Great White Shark</span>
+                    <span id="fishDisplayRarity">some rarity</span>
+                    <div id="fishDisplayFishContainer">
+                        <img src="media/fishing/fish/great_white_shark.png" width="232px" id="fishDisplayFish">
                     </div>
-                    <div class="news">
-                        <span ignoreCursor="true">DeBread.space v0.02 released</span>
-                        <span ignoreCursor="true">
-                            Fixed a few things and added a secret 'Bread Game' (Click the guy 10 times to unlock). Visit the <a
-                                href="https://github.com/NotDeBread/WebsiteV5/commits/master/" target="_blank">GitHub page</a> for the
-                            full changelog
-                        </span>
-                        <em>June 18th, 2024</em>
-                    </div>
-                    <div class="news">
-                        <span ignoreCursor="true">DeBread.space moves away from DeBreadOS</span>
-                        <span ignoreCursor="true">
-                            After a few months after DeBreadOS' release, I've decided it wasn't the greatest way of showing all of my content. So I made this
-                            simpler, easier to use website instead.
-                        </span>
-                        <em>June 13th, 2024</em>
-                    </div>
+                    <span id="fishDisplaySize">Largest caught: -</span>
                 </div>
             </div>
         </div>
+        <div id="innerFishingContainer">
+            <div id="fishStars">
+                <!-- <span class="fishStar">⭐</span> -->
+            </div>
+            <div id="fishPopup">
+                <div style="line-height: 1.5; text-align: center;">
+                    <span id="fishPopupName">Fish name</span><br>
+                    <span id="fishPopupRarity">fish rarity</span>
+                </div>
+                <div id="fishPopupFishContainer">
+                    <img src="media/fishing/fish/cod.png" id="fishPopupFish">
+                </div>
+                <div>
+                    <span id="fishSize">0m</span>
+                </div>
+                <button onclick="closeFishPopup()">OK</button>
+            </div>
+            <div id="fishingButtonContainer" onclick="castAnim()">
+                <div id="fishingButton">FISH</div>
+            </div>
+
+            <canvas width="500" height="192" id="fishingCanvas"></canvas>
+            <div id="fishingBread">
+
+            </div>
+            <div class="fishingBG" id="fishingBGFront"></div>
+            <div class="fishingBG" id="fishingBGBack"></div>
+
+            <div id="catchingContainer">
+                <div id="catchingBarContainer">
+                    <div id="catchingBar"></div>
+                    <div id="evilCatchingBar"></div>
+                </div>
+                <div id="catchingBarLabels">
+
+                </div>
+            </div>
+        </div>
+        <div id="fishingWater">
+
+        </div>
     </div>
 
-    <div id="toolboxBox" style="display: none;">
-        <div class="screwGroup">
-            <img src="media/tools/screw.png" class="screw">
-            <img src="media/tools/screw.png" class="screw">
-        </div>
-        <div class="screwGroup">
-            <img src="media/tools/screw.png" class="screw">
-            <img src="media/tools/screw.png" class="screw">
-        </div>
-    </div>
+    <!-- <div id="stakeContainer">
+        <span>GAMBLE RESPONSIBLY | #AD</span>
+        <img src="media/stake.png" id="stakeLogo">
+    </div> -->
 
-    <div id="toolboxContainer" style="display: none;">
-        <div id="toolboxTab">Toolbox</div>
-        <div id="toolbox">
-            <button>
-                <img src="media/tools/square.png" ignoreCursor="true">
-            </button>
-            <button>
-                <img src="media/tools/pencil.png" ignoreCursor="true">
-            </button>
-            <button>
-                <img src="media/tools/magnet.png" ignoreCursor="true">
-            </button>
-        </div>
-    </div>
+    <!-- <div id="visitorCount">
+        <span>You are visitor #</span>
+        <img src='https://www.free-website-hit-counter.com/zc.php?d=9&id=4149&s=5' width="150px">
+    </div> -->
 
-    <span id="footerText">Made with not linktree but my brain instead</span>
+    <span id="version">v0.04</span>
 
-    <span id="version">v0.03e</span>
-
+    <div id="bgParticles"></div>
 
     <script src="DeBread.js"></script>
     <script src="cursor.js"></script>
@@ -298,6 +593,72 @@
     <script src="breadGame.js"></script>
     <script src="toolbox.js"></script>
     <script src="underBread.js"></script>
+    <script src="feesh.js"></script>
+
+    <script src="https://xemantic.github.io/shader-web-background/dist/shader-web-background.min.js"></script>
+    <script type="x-shader/x-fragment" id="image">
+    precision mediump float;
+    #define SPIN_EASE 0.8
+    #define spin_time 5.
+    #define spin_amount 0.3
+    #define contrast 1.
+
+    // #define PIXEL_SIZE_FAC 700.
+
+    // default colours
+    // #define colour_1 vec4(1.0,0.3725490196,0.3333333333,1.0)
+    // #define colour_2 vec4(0.0,0.6156862745,1.0,1.0)
+    // #define colour_3 vec4(0.2156862745,0.2588235294,0.2666666667,1.0)
+
+    // dark theme colors
+    #define colour_1 vec4(0.0, 0.0, 0.0, 1.0)
+    #define colour_2 vec4(0.1, 0.1, 0.1, 1.0)
+    #define colour_3 vec4(0.15, 0.15, 0.15, 1.0)
+
+    // light theme colors
+    // #define colour_1 vec4(1, 1, 1, 1.0)
+    // #define colour_2 vec4(0.9, 0.9, 0.9, 1.0)
+    // #define colour_3 vec4(0.8, 0.8, 0.8, 1.0)
+
+    uniform vec2 iResolution;
+    uniform float iTime;
+
+    void main( )
+    {
+      // uncomment to enable pixelated bg
+      // float pixel_size = length(iResolution.xy)/PIXEL_SIZE_FAC;
+      float pixel_size = 1.0;
+      vec2 uv = (floor(gl_FragCoord.xy*(1./pixel_size))*pixel_size - 0.5*iResolution.xy)/length(iResolution.xy) - vec2(0.12, 0.);
+      
+      float uv_len = length(uv);
+      
+      float speed = (spin_time*SPIN_EASE*0.2) + 302.2;
+      float new_pixel_angle = (atan(uv.y, uv.x)) + speed - SPIN_EASE*20.*(1.*spin_amount*uv_len + (1. - 1.*spin_amount));
+      
+      vec2 mid = vec2(0.5, 0.5);
+      uv = (vec2((uv_len * cos(new_pixel_angle) + mid.x), (uv_len * sin(new_pixel_angle) + mid.y)) - mid);
+      
+      uv *= 30.;
+      speed = iTime*(2.);
+      vec2 uv2 = vec2(uv.x+uv.y);
+
+      for(int i=0; i < 5; i++) {
+        uv2 += sin(max(uv.x, uv.y)) + uv;
+        uv  += 0.5*vec2(cos(5.1123314 + 0.353*uv2.y + speed*0.131121),sin(uv2.x - 0.113*speed));
+        uv  -= 1.0*cos(uv.x + uv.y) - 1.0*sin(uv.x*0.711 - uv.y);
+      }
+      
+      float contrast_mod = (0.25*contrast + 0.5*spin_amount + 1.2);
+      float paint_res =min(2., max(0.,length(uv)*(0.035)*contrast_mod));
+      float c1p = max(0.,1. - contrast_mod*abs(1.-paint_res));
+      float c2p = max(0.,1. - contrast_mod*abs(paint_res));
+      float c3p = 1. - min(1., c1p + c2p);
+
+      // Output to screen
+      gl_FragColor = (0.3/contrast)*colour_1 + (1. - 0.3/contrast)*(colour_1*c1p + colour_2*c2p + vec4(c3p*colour_3.rgb, c3p*colour_1.a));
+    }
+  </script>
+    <script src="bgShader.js"></script>
 </body>
 
 </html>

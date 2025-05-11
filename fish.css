@@ -1,0 +1,450 @@
+#fishCloseButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    font-weight: 900;
+    background-color: black;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#fishMenuButtons {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 11;
+    transition: top ease-in-out 500ms;
+}
+
+.fishMenuButton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: black;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    image-rendering: pixelated;
+    transition: scale var(--bouncy) 250ms;
+}
+
+.fishMenuButton:hover {
+    scale: 1.1;
+}
+
+.fishMenuButton:active {
+    scale: 1;
+}
+
+#fishMenuContainer {
+    position: absolute;
+    top: 0;
+    left: 200px;
+    width: 500px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* outline: 1px solid red; */
+    z-index: 10;
+    /* display: none; */
+}
+
+.fishMenu {
+    width: 450px;
+    height: 250px;
+    outline: 2px solid rgb(40, 56, 39);
+    background-color: rgb(72, 87, 65);
+    box-shadow: 0px 10px 0px 2px rgb(40, 56, 39);
+    border-radius: 5px;
+    translate: 0px 300px;
+    transition: translate ease-in-out 300ms;
+    position: absolute;
+    top: 15px;
+    left: 2px;
+}
+
+.fishMenuHeader {
+    font-size: 1.25em;
+    font-weight: 700;
+    padding: 5px;
+    outline: 2px solid rgb(40, 56, 39);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#collectionContainer {
+    height: calc(100% - 60px);
+    /* outline: 1px solid lime; */
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.collectionFish {
+    width: 100px;
+    height: 100px;
+    /* outline: 1px solid yellow; */
+    background-color: rgb(50, 66, 44);
+    border-radius: 5px;
+}
+
+#fishDisplayContainerContainer { /* I LOVE DIVS!!!!!!!!!!!! */
+    width: 500px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 750px;
+    top: 0;
+    /* display: none; */
+}
+
+#fishDisplayContainer {
+    position: absolute;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background-color: rgb(72, 87, 65);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 0px 2px rgb(40, 56, 39), 0px 10px 0px 2px rgb(40, 56, 39);
+    translate: 0px 300px;
+    transition: translate ease-in-out 300ms;
+}
+
+#fishDisplay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 400px;
+}
+
+#fishDisplayTitle {
+    font-size: 1.25em;
+    font-weight: 700;
+}
+
+#fishDisplayTitle, #fishDisplayRarity, #fishDisplaySize {
+    padding: 0px 5px;
+    background-color: rgb(40, 56, 39);
+    border-radius: 5px;
+}
+
+#fishDisplayFishContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    image-rendering: pixelated;
+    position: relative;
+    height: 100px;
+}
+
+#fishDisplayFish {
+    position: absolute;
+    z-index: -1;
+}
+
+#fishingContainer {
+    width: 100dvw;
+    height: 288px;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-top: 2px solid white;
+    z-index: 5;
+    overflow: hidden;
+    display: none;
+}
+
+#fishStars {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    display: flex;
+    gap: 10px;
+}
+
+.fishStar {
+    filter: brightness(1000);
+    font-size: 2em;
+    animation: wiggle 250ms ease-out 1 forwards;
+}
+
+#fishPopup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 5;
+    gap: 10px;
+    background-color: rgb(0,0,0,0.5);
+}
+
+#fishPopupName {
+    font-size: 1.5em;
+    font-weight: 700;
+    background-color: rgb(0,0,0,0.5);
+    padding: 2px 5px;
+    border-radius: 5px;
+    outline: 3px solid rgb(74,122,199);
+    backdrop-filter: blur(10px);
+}
+
+#fishPopupRarity {
+    padding: 0px 5px;
+    background-color: rgb(100,100,100);
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+#fishSize {
+    background-color: rgb(0,0,0,0.5);
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+#fishPopupFishContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 128px;
+    position: relative;
+}
+
+#fishPopupFish {
+    image-rendering: pixelated;
+    position: absolute;
+    z-index: -1;
+    animation: fishWiggle 1000ms ease-out 1s infinite forwards;
+}
+
+#innerFishingContainer {
+    position: relative;
+    width: 100%;
+    height: 288px;
+    background-color: rgb(98, 171, 212);
+    image-rendering: pixelated;
+}
+
+#fishingWater { /*Those who know: 💀*/
+    width: 100%;
+    height: 24px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: aqua;
+    background-image: url(media/fishing/water.png);
+    background-size: 768px;
+    image-rendering: pixelated;
+    z-index: 2;
+}
+
+#fishingButtonContainer {
+    height: 100%;
+    position: absolute;
+    right: 100px;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+#fishingButton {
+    background-color: rgb(101, 128, 99);
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 2px solid rgb(164, 201, 137);
+    cursor: pointer;
+    user-select: none;
+}
+
+#fishingButton:active {
+    scale: 0.9;
+    filter: brightness(90%);
+}
+
+#fishingBread {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 240px;
+    height: 192px;
+    background-image: url(media/fishing/breadSit.png);
+    background-size: 100%;
+    z-index: 3;
+}
+
+#fishingCanvas {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+    height: 192px;
+    z-index: 6;
+}
+
+.fishingBG {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: 768px;
+}
+
+#fishingBGBack {
+    background-image: url(media/fishing/cloudsBack.png);
+    z-index: 0;
+    animation: bgScroll 90s linear infinite forwards;
+}
+
+#fishingBGFront {
+    background-image: url(media/fishing/cloudsFront.png);
+    z-index: 1;
+    animation: bgScroll 60s linear infinite forwards;
+}
+
+@keyframes bgScroll {
+    to {
+        background-position: 768px 0px;
+    }
+}
+
+#catchingContainer {
+    position: absolute;
+    height: calc(100% - 24px);
+    width: 100px;
+    left: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    z-index: 2;
+    translate: 0px 250px;
+    transition: translate ease-in-out 250ms;
+}
+
+#catchingBarContainer {
+    width: 24px;
+    height: 200px;
+    /* outline: 3px solid black; */
+    box-shadow: 0px 0px 0px 3px black, 0px  0px 0px 6px white;
+    display: flex;
+    align-items: flex-end;
+    background-color: rgb(66, 48, 31);
+    overflow: hidden;
+    position: relative;
+}
+
+#catchingBar {
+    width: 100%;
+    height: 50%;
+    background-color: rgb(112, 219, 105);
+    outline: 3px solid rgb(48, 115, 62);
+}
+
+#evilCatchingBar {
+    width: 100%;
+    height: 50%;
+    background-color: rgb(219, 105, 105);
+    outline: 3px solid rgb(115, 48, 48);
+    position: absolute;
+    bottom: 0;
+}
+
+.catchingBarLine {
+    position: absolute;
+    outline: 2px solid black;
+    opacity: 0.5;
+    width: 100%;
+}
+
+#catchingBarLabels {
+    height: 200px;
+    /* outline: 1px solid red; */
+    width: 50px;
+    position: relative;
+}
+
+.catchingBarLabel {
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    translate: 0px 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15px;
+    border-radius: 7.5px;
+}
+
+@keyframes wiggle {
+    0% {
+      transform: rotate(7deg) scale(1.1);
+    }
+    25% {
+      transform: rotate(-5deg);
+    }
+    50% {
+      transform: rotate(2deg);
+    }
+    75% {
+      transform: rotate(-1deg);
+    }
+    100% {
+      transform: rotate(0);
+    }
+}
+
+@keyframes fishWiggle {
+    0% {
+      transform: rotate(5deg) translateY(-3px);
+    }
+    25% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(0);
+    }
+}
+
+.bobber {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    z-index: 10;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    image-rendering: pixelated;
+}

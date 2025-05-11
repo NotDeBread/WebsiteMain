@@ -3,6 +3,7 @@ soul.pos = [0, 0]
 const underContainer = doge('underBreadContainer')
 const underPlayArea = doge('underPlayArea')
 const enemyContainer = doge('underEnemyContainer')
+const underBreadEnabled = false
 
 const underPlayer = {
     health: 32,
@@ -190,249 +191,251 @@ function selectButton(index) {
 }
 
 document.addEventListener('keydown', ev => {
-    if(ev.key === 'ArrowLeft') {
-        if(!playerControls) {
-            if(!buttonSelected) {
-                if(selectedButton === 0) {
-                    selectedButton = 3
-                } else {
-                    selectedButton--
-                }
-                selectButton(selectedButton)
-            } else {
-                if(doge(`playAreaButton${innerSelectedButton - 1}`)) {
-                    innerSelectedButton--
-                    updateInfoText(doge(`playAreaButton${innerSelectedButton}`).desc)
-                    DeBread.playSound('media/underBread/sfx/squeak.wav', 0.25)
-                    moveSoul([doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().left + 7, doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().top + doge(`playAreaButton${innerSelectedButton}`).offsetHeight / 2], true)
-                    
-                }
-            }
-        } else {
-            if(underPlayer.movementIntervals.left === undefined) {
-                underPlayer.movementIntervals.left = setInterval(() => {
-                    if(underPlayer.pos[0] > 0) {
-                        underPlayer.pos[0] -= underPlayer.speed
-                    } else {
-                        underPlayer.pos[0] = 0
-                    }
-                    updateSoulPos()
-                }, 15);
-            }
-        }
-    }
-
-    if(ev.key === 'ArrowRight') {
-        if(!playerControls) {
-            if(!buttonSelected) {
-                if(selectedButton === 3) {
-                    selectedButton = 0
-                } else {
-                    selectedButton++
-                }
-                selectButton(selectedButton)
-    
-            } else {
-                if(doge(`playAreaButton${innerSelectedButton + 1}`)) {
-                    innerSelectedButton++
-                    updateInfoText(doge(`playAreaButton${innerSelectedButton}`).desc)
-                    DeBread.playSound('media/underBread/sfx/squeak.wav', 0.25)
-                    moveSoul([doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().left + 7, doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().top + doge(`playAreaButton${innerSelectedButton}`).offsetHeight / 2], true)
-                }
-            }
-        } else {
-            if(underPlayer.movementIntervals.right === undefined) {
-                underPlayer.movementIntervals.right = setInterval(() => {
-                    if(underPlayer.pos[0] < underPlayArea.offsetWidth - doge('controlSoul').offsetWidth) {
-                        underPlayer.pos[0] += underPlayer.speed
-                    } else {
-                        underPlayer.pos[0] = underPlayArea.offsetWidth - doge('controlSoul').offsetWidth
-                    }
-                    updateSoulPos()
-                }, 15);
-            }
-        }
-    }
-
-    if(ev.key === 'ArrowDown') {
-        if(!playerControls) {
-            if(buttonSelected) {
-                if(doge(`playAreaButton${innerSelectedButton + 2}`)) {
-                    innerSelectedButton += 2
-                    updateInfoText(doge(`playAreaButton${innerSelectedButton}`).desc)
-                    DeBread.playSound('media/underBread/sfx/squeak.wav', 0.25)
-                    moveSoul([doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().left + 7, doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().top + doge(`playAreaButton${innerSelectedButton}`).offsetHeight / 2], true)
-                }
-            }
-        } else {
-            if(underPlayer.movementIntervals.down === undefined) {
-                underPlayer.movementIntervals.down = setInterval(() => {
-                    if(underPlayer.pos[1] < underPlayArea.offsetHeight - doge('controlSoul').offsetHeight) {
-                        underPlayer.pos[1] += underPlayer.speed
-                    } else {
-                        underPlayer.pos[1] = underPlayArea.offsetHeight - doge('controlSoul').offsetHeight
-                    }
-                    updateSoulPos()
-                }, 15);
-            }
-        }
-    }
-
-    if(ev.key === 'ArrowUp') {
-        if(!playerControls) {
-            if(buttonSelected) {
-                if(doge(`playAreaButton${innerSelectedButton - 2}`)) {
-                    innerSelectedButton -= 2
-                    updateInfoText(doge(`playAreaButton${innerSelectedButton}`).desc)
-                    DeBread.playSound('media/underBread/sfx/squeak.wav', 0.25)
-                    moveSoul([doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().left + 7, doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().top + doge(`playAreaButton${innerSelectedButton}`).offsetHeight / 2], true)
-                }
-            }
-        } else {
-            if(underPlayer.movementIntervals.up === undefined) {
-                underPlayer.movementIntervals.up = setInterval(() => {
-                    if(underPlayer.pos[1] > 0) {
-                        underPlayer.pos[1] -= underPlayer.speed
-                    } else {
-                        underPlayer.pos[1] = 0
-                    }
-                    updateSoulPos()
-                }, 15);
-            }
-        }
-    }
-
-    if(ev.key.toLowerCase() === 'z') {
-        if(!underPlayer.deathScreenActive) {
+    if(underBreadEnabled) {
+        if(ev.key === 'ArrowLeft') {
             if(!playerControls) {
-                if(!attackActive) {
-                    DeBread.playSound('media/underBread/sfx/select.wav', 0.25)
-                    if(!buttonSelected) {
-                        if(selectedButton === 0) {
-                            createButtons(
-                                [
-                                    [['* DeBread', () => {startAttack()}]],
-                                ]
-                            )
+                if(!buttonSelected) {
+                    if(selectedButton === 0) {
+                        selectedButton = 3
+                    } else {
+                        selectedButton--
+                    }
+                    selectButton(selectedButton)
+                } else {
+                    if(doge(`playAreaButton${innerSelectedButton - 1}`)) {
+                        innerSelectedButton--
+                        updateInfoText(doge(`playAreaButton${innerSelectedButton}`).desc)
+                        DeBread.playSound('media/underBread/sfx/squeak.wav', 0.25)
+                        moveSoul([doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().left + 7, doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().top + doge(`playAreaButton${innerSelectedButton}`).offsetHeight / 2], true)
+                        
+                    }
+                }
+            } else {
+                if(underPlayer.movementIntervals.left === undefined) {
+                    underPlayer.movementIntervals.left = setInterval(() => {
+                        if(underPlayer.pos[0] > 0) {
+                            underPlayer.pos[0] -= underPlayer.speed
+                        } else {
+                            underPlayer.pos[0] = 0
                         }
-                        if(selectedButton === 1) {
-                            createButtons(
-                                [
-                                    [['* Check', () => {createText(`DeBread \n ${underEnemy.health}HP \n ${underEnemy.pissedLevel} Pissed LVL`)}], ['* Mention ULTRAKILL', () => {createSpeechBubble('That\'s actually my favorite game! Recently I\'ve been trying to beat P-2 (The hardest level in the game so far) on the hardest difficulty, BRUTAL. It\'s been a real struggle but I\'m getting there.'); actionSequence(exampleAction)}]],
-                                    [['* Insult Annie', () => {createSpeechBubble('The fuck did you just say?'); underEnemy.currentDialogue = '* DeBread is noticeably pissed.'; actionSequence(dogCannonAction, '* You shouldn\'t\'ve done that...')}], ['* Winnie', () => {actionSequence(winnieAction)}]],
-                                    [['* Goober', () => {actionSequence(gooberAction)}]]
-                                ]
-                            )
+                        updateSoulPos()
+                    }, 15);
+                }
+            }
+        }
+    
+        if(ev.key === 'ArrowRight') {
+            if(!playerControls) {
+                if(!buttonSelected) {
+                    if(selectedButton === 3) {
+                        selectedButton = 0
+                    } else {
+                        selectedButton++
+                    }
+                    selectButton(selectedButton)
+        
+                } else {
+                    if(doge(`playAreaButton${innerSelectedButton + 1}`)) {
+                        innerSelectedButton++
+                        updateInfoText(doge(`playAreaButton${innerSelectedButton}`).desc)
+                        DeBread.playSound('media/underBread/sfx/squeak.wav', 0.25)
+                        moveSoul([doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().left + 7, doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().top + doge(`playAreaButton${innerSelectedButton}`).offsetHeight / 2], true)
+                    }
+                }
+            } else {
+                if(underPlayer.movementIntervals.right === undefined) {
+                    underPlayer.movementIntervals.right = setInterval(() => {
+                        if(underPlayer.pos[0] < underPlayArea.offsetWidth - doge('controlSoul').offsetWidth) {
+                            underPlayer.pos[0] += underPlayer.speed
+                        } else {
+                            underPlayer.pos[0] = underPlayArea.offsetWidth - doge('controlSoul').offsetWidth
                         }
-                        if(selectedButton === 2) {
-                            let buttons = [[],[],[]]
-                            let i = 0
-                            for(const item in inventory) {
-                                buttons[Math.floor(i / 2)].push([inventory[item].name, inventory[item].action, inventory[item].desc])
-                                i++
+                        updateSoulPos()
+                    }, 15);
+                }
+            }
+        }
+    
+        if(ev.key === 'ArrowDown') {
+            if(!playerControls) {
+                if(buttonSelected) {
+                    if(doge(`playAreaButton${innerSelectedButton + 2}`)) {
+                        innerSelectedButton += 2
+                        updateInfoText(doge(`playAreaButton${innerSelectedButton}`).desc)
+                        DeBread.playSound('media/underBread/sfx/squeak.wav', 0.25)
+                        moveSoul([doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().left + 7, doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().top + doge(`playAreaButton${innerSelectedButton}`).offsetHeight / 2], true)
+                    }
+                }
+            } else {
+                if(underPlayer.movementIntervals.down === undefined) {
+                    underPlayer.movementIntervals.down = setInterval(() => {
+                        if(underPlayer.pos[1] < underPlayArea.offsetHeight - doge('controlSoul').offsetHeight) {
+                            underPlayer.pos[1] += underPlayer.speed
+                        } else {
+                            underPlayer.pos[1] = underPlayArea.offsetHeight - doge('controlSoul').offsetHeight
+                        }
+                        updateSoulPos()
+                    }, 15);
+                }
+            }
+        }
+    
+        if(ev.key === 'ArrowUp') {
+            if(!playerControls) {
+                if(buttonSelected) {
+                    if(doge(`playAreaButton${innerSelectedButton - 2}`)) {
+                        innerSelectedButton -= 2
+                        updateInfoText(doge(`playAreaButton${innerSelectedButton}`).desc)
+                        DeBread.playSound('media/underBread/sfx/squeak.wav', 0.25)
+                        moveSoul([doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().left + 7, doge(`playAreaButton${innerSelectedButton}`).getBoundingClientRect().top + doge(`playAreaButton${innerSelectedButton}`).offsetHeight / 2], true)
+                    }
+                }
+            } else {
+                if(underPlayer.movementIntervals.up === undefined) {
+                    underPlayer.movementIntervals.up = setInterval(() => {
+                        if(underPlayer.pos[1] > 0) {
+                            underPlayer.pos[1] -= underPlayer.speed
+                        } else {
+                            underPlayer.pos[1] = 0
+                        }
+                        updateSoulPos()
+                    }, 15);
+                }
+            }
+        }
+    
+        if(ev.key.toLowerCase() === 'z') {
+            if(!underPlayer.deathScreenActive) {
+                if(!playerControls) {
+                    if(!attackActive) {
+                        DeBread.playSound('media/underBread/sfx/select.wav', 0.25)
+                        if(!buttonSelected) {
+                            if(selectedButton === 0) {
+                                createButtons(
+                                    [
+                                        [['* DeBread', () => {startAttack()}]],
+                                    ]
+                                )
                             }
-                            createButtons(buttons)
-                        }
-                        if(selectedButton === 3) {
-                            createButtons(
-                                [
-                                    [['* Spare', () => {
-                                        actionSequence(exampleAction)
-                                        createSpeechBubble('That\'s not gonna work lmao')
-                                    }], ['* Flee', () => {
-                                        underContainer.style.opacity = 0
-                                        soul.style.opacity = 0
-                                        cursor.style.opacity = 1
-                                        underContainer.style.pointerEvents = 'none'
-                                    }, 'Leave the fight.']],
-                                ]
-                            )
+                            if(selectedButton === 1) {
+                                createButtons(
+                                    [
+                                        [['* Check', () => {createText(`DeBread \n ${underEnemy.health}HP \n ${underEnemy.pissedLevel} Pissed LVL`)}], ['* Mention ULTRAKILL', () => {createSpeechBubble('That\'s actually my favorite game! Recently I\'ve been trying to beat P-2 (The hardest level in the game so far) on the hardest difficulty, BRUTAL. It\'s been a real struggle but I\'m getting there.'); actionSequence(exampleAction)}]],
+                                        [['* Insult Annie', () => {createSpeechBubble('The fuck did you just say?'); underEnemy.currentDialogue = '* DeBread is noticeably pissed.'; actionSequence(dogCannonAction, '* You shouldn\'t\'ve done that...')}], ['* Winnie', () => {actionSequence(winnieAction)}]],
+                                        [['* Goober', () => {actionSequence(gooberAction)}]]
+                                    ]
+                                )
+                            }
+                            if(selectedButton === 2) {
+                                let buttons = [[],[],[]]
+                                let i = 0
+                                for(const item in inventory) {
+                                    buttons[Math.floor(i / 2)].push([inventory[item].name, inventory[item].action, inventory[item].desc])
+                                    i++
+                                }
+                                createButtons(buttons)
+                            }
+                            if(selectedButton === 3) {
+                                createButtons(
+                                    [
+                                        [['* Spare', () => {
+                                            actionSequence(exampleAction)
+                                            createSpeechBubble('That\'s not gonna work lmao')
+                                        }], ['* Flee', () => {
+                                            underContainer.style.opacity = 0
+                                            soul.style.opacity = 0
+                                            cursor.style.opacity = 1
+                                            underContainer.style.pointerEvents = 'none'
+                                        }, 'Leave the fight.']],
+                                    ]
+                                )
+                            }
+                        } else {
+                            doge(`playAreaButton${innerSelectedButton}`)?.action()
                         }
                     } else {
-                        doge(`playAreaButton${innerSelectedButton}`)?.action()
-                    }
-                } else {
-                    if(!attackInProgress) {
-                        clearInterval(attackMoveInterval)
-                        attackInProgress = true
-                        let damage = 0
-                        let damageMultiplier = 1
-                        
-                        if(doge('underAttackBar').pos === 380 + doge('underAttackBar').offset) {
-                            damageMultiplier = 1.25
-                            doge('underAttackBar').style.animation = 'goodAttack 500ms ease-out 1 forwards'
-                            DeBread.playSound('media/underBread/sfx/bell.wav', 0.25)
-                        }
-    
-                        let attackBarAnimInterval = setInterval(() => {
-                            doge('underAttackBar').style.backgroundColor = 'black'
-                            doge('underAttackBar').style.outline = 'inset 0px 0px 0px 2px white'
-                            setTimeout(() => {
-                                doge('underAttackBar').style.backgroundColor = 'white'
-                                doge('underAttackBar').style.outline = 'inset 0px 0px 0px 2px black'
-                            }, 50);
-                        }, 100);
-            
-                        setTimeout(() => {
-                            clearInterval(attackBarAnimInterval)
-                            DeBread.playSound('media/underBRead/sfx/damage.wav', 0.2)
-                            DeBread.shake(enemyContainer, 50, 25, 0, 500)
-                            damage = Math.abs(750 - ((750 / 2) - doge('underAttackBar').pos)) / 10
-                            damage *= damageMultiplier
-                            damageEnemy(damage + DeBread.randomNum(-5, 5))
-            
-                            setTimeout(() => {                                
-                                underPlayArea.innerHTML = ''
-                                underPlayArea.style.width = '570px'
+                        if(!attackInProgress) {
+                            clearInterval(attackMoveInterval)
+                            attackInProgress = true
+                            let damage = 0
+                            let damageMultiplier = 1
+                            
+                            if(doge('underAttackBar').pos === 380 + doge('underAttackBar').offset) {
+                                damageMultiplier = 1.25
+                                doge('underAttackBar').style.animation = 'goodAttack 500ms ease-out 1 forwards'
+                                DeBread.playSound('media/underBread/sfx/bell.wav', 0.25)
+                            }
+        
+                            let attackBarAnimInterval = setInterval(() => {
+                                doge('underAttackBar').style.backgroundColor = 'black'
+                                doge('underAttackBar').style.outline = 'inset 0px 0px 0px 2px white'
                                 setTimeout(() => {
-                                    attackInProgress = false
-                                    buttonSelected = false
-                                    attackActive = false
-                                    innerSelectedButton = undefined
-                                    actionSequence(gooberAction)
+                                    doge('underAttackBar').style.backgroundColor = 'white'
+                                    doge('underAttackBar').style.outline = 'inset 0px 0px 0px 2px black'
+                                }, 50);
+                            }, 100);
+                
+                            setTimeout(() => {
+                                clearInterval(attackBarAnimInterval)
+                                DeBread.playSound('media/underBRead/sfx/damage.wav', 0.2)
+                                DeBread.shake(enemyContainer, 50, 25, 0, 500)
+                                damage = Math.abs(750 - ((750 / 2) - doge('underAttackBar').pos)) / 10
+                                damage *= damageMultiplier
+                                damageEnemy(damage + DeBread.randomNum(-5, 5))
+                
+                                setTimeout(() => {                                
+                                    underPlayArea.innerHTML = ''
+                                    underPlayArea.style.width = '570px'
                                     setTimeout(() => {
                                         attackInProgress = false
-                                    }, 250);
-                                }, 100);
-                            }, 2000);
-                        }, 1000);
-            
-                        DeBread.playSound('media/underBRead/sfx/swing.wav', 0.2)
+                                        buttonSelected = false
+                                        attackActive = false
+                                        innerSelectedButton = undefined
+                                        actionSequence(gooberAction)
+                                        setTimeout(() => {
+                                            attackInProgress = false
+                                        }, 250);
+                                    }, 100);
+                                }, 2000);
+                            }, 1000);
+                
+                            DeBread.playSound('media/underBRead/sfx/swing.wav', 0.2)
+                        }
                     }
                 }
+            } else {
+                underContainer.style.filter = 'brightness(1)'
+                doge('soul').src = 'media/underBread/img/soul.png'
+                soul.style.opacity = 1
+                underPlayer.alive = true
+                underPlayer.deathScreenActive = false
+    
+                doge('underBreadGameOver').style.animation = 'none'
+                deathMusic.pause()
+                deathMusic.currentTime = 0
+    
+                startFight()
             }
-        } else {
-            underContainer.style.filter = 'brightness(1)'
-            doge('soul').src = 'media/underBread/img/soul.png'
-            soul.style.opacity = 1
-            underPlayer.alive = true
-            underPlayer.deathScreenActive = false
-
-            doge('underBreadGameOver').style.animation = 'none'
-            deathMusic.pause()
-            deathMusic.currentTime = 0
-
-            startFight()
+    
+            selectButton(undefined)
+            buttonSelected = true
+            updateInfoText(doge(`playAreaButton${innerSelectedButton}`).desc)
         }
-
-        selectButton(undefined)
-        buttonSelected = true
-        updateInfoText(doge(`playAreaButton${innerSelectedButton}`).desc)
-    }
-
-    if(ev.key === 'x') {
-        if(!underPlayer.deathScreenActive && underPlayer.alive) {
-            if(!playerControls) {
-                if(!attackActive) {
-                    createText(underEnemy.currentDialogue)
-                    buttonSelected = false
-                    innerSelectedButton = undefined
-                    selectButton(selectedButton)
-                    doge('underInfo').innerText = ''
+    
+        if(ev.key === 'x') {
+            if(!underPlayer.deathScreenActive && underPlayer.alive) {
+                if(!playerControls) {
+                    if(!attackActive) {
+                        createText(underEnemy.currentDialogue)
+                        buttonSelected = false
+                        innerSelectedButton = undefined
+                        selectButton(selectedButton)
+                        doge('underInfo').innerText = ''
+                    }
                 }
+            } else {
+                underContainer.style.display = 'none'
             }
-        } else {
-            underContainer.style.display = 'none'
         }
     }
 })

@@ -6,6 +6,7 @@ let cursorX = 0
 let cursorY = 0
 let cursorHovering = undefined
 let customContextMenu = true
+let hoveringNoZone = false
 
 const speed = 0.15
 let mouseTarget = () => {return [mouse[0], mouse[1]]}
@@ -29,11 +30,15 @@ document.addEventListener('mousemove', (e) => {
 updateCursor()
 
 document.addEventListener('mousedown', () => {
-    if(cursorHovering === undefined) {
+    if(cursorHovering === undefined && !hoveringNoZone) {
         cursor.style.scale = 0.75
     }
 })
-document.addEventListener('mouseup', () => {cursor.style.scale = 1})
+document.addEventListener('mouseup', () => {
+    if(!hoveringNoZone) {
+        cursor.style.scale = 1
+    }
+})
 
 document.querySelectorAll('span, em').forEach(text => {
     if(!text.getAttribute('ignoreCursor')) {
@@ -108,7 +113,35 @@ document.querySelectorAll('img').forEach(img => {
     }
 })
 
-document.querySelectorAll('.game').forEach(game => {
+document.querySelectorAll('.checkbox').forEach(img => {
+    if(!img.getAttribute('ignoreCursor')) {
+        img.onmouseenter = () => {
+            if(!contextMenuOpen && !img.getAttribute('ignore') && !selectedTool) {
+                const rect = img.getBoundingClientRect()
+                mouseTarget = () => {return [rect.left + img.offsetWidth / 2, rect.top + img.offsetHeight / 2]}
+                cursor.style.borderRadius = '0'
+                cursor.style.width = img.offsetWidth + 'px'
+                cursor.style.height = img.offsetHeight + 'px'
+                cursor.style.outline = '2px solid white'
+                cursor.style.backdropFilter = 'none'
+                cursorHovering = img
+            }
+        }
+        img.onmouseleave = () => {
+            if(!contextMenuOpen && !img.getAttribute('ignore') && !selectedTool) {
+                mouseTarget = () => {return [mouse[0], mouse[1]]}
+                cursor.style.borderRadius = '50%'
+                cursor.style.width = '15px'
+                cursor.style.height = '15px'
+                cursor.style.outline = 'none'
+                cursor.style.backdropFilter = 'invert()'
+                cursorHovering = undefined
+            }
+        }
+    }
+})
+
+document.querySelectorAll('.game, .interestGame').forEach(game => {
     game.onmouseenter = () => {
         if(!contextMenuOpen && !game.getAttribute('ignore') && !selectedTool) {
             const rect = game.getBoundingClientRect()
@@ -132,11 +165,11 @@ document.querySelectorAll('.game').forEach(game => {
             cursorHovering = undefined
         }
     }
-    game.onclick = () => {
+    game.addEventListener('click', () => {
         if(game.getAttribute('game') && !selectedTool) {
             window.open(`https://debread.space/${game.getAttribute('game')}`, '_blank')
         }
-    }
+    })
 })
 
 document.querySelectorAll('a').forEach(link => {
@@ -168,6 +201,71 @@ document.querySelectorAll('a').forEach(link => {
     }
 })
 
+document.querySelectorAll('.noCursor').forEach(elem => {
+    elem.onmouseenter = () => {
+        hoveringNoZone = true
+        cursor.style.scale = 0
+        realCursor.style.opacity = 0
+        document.body.style.cursor = 'unset'
+    }
+    elem.onmouseleave = () => {
+        hoveringNoZone = false
+        cursor.style.scale = 1
+        realCursor.style.opacity = 1
+        document.body.style.cursor = 'none'
+    }
+})
+
+document.querySelectorAll('.musicWidgetProgressContainer').forEach(elem => {
+    elem.onmouseenter = () => {
+        elemRect = elem.getBoundingClientRect()
+        cursor.style.height = '10px'
+        cursor.style.width = '2px'
+        cursor.style.borderRadius = '0'
+        mouseTarget = () => {
+            return [mouse[0], elemRect.top + 5]
+        }
+    }
+
+    elem.onmouseleave = () => {
+        if(!contextMenuOpen && !selectedTool) {
+            mouseTarget = () => {return [mouse[0], mouse[1]]}
+            cursor.style.width = '15px'
+            cursor.style.height = '15px'
+            cursor.style.borderRadius = '50%'
+        }
+    }
+})
+
+document.querySelectorAll('color').forEach(elem => {
+    //Set color stuff
+    elem.style.backgroundColor = elem.getAttribute('hex')
+
+    elem.onmouseenter = () => {
+        elemRect = elem.getBoundingClientRect()
+        cursor.style.height = elem.offsetHeight + 'px'
+        cursor.style.width = elem.offsetWidth + 'px'
+        cursor.style.borderRadius = '0'
+        cursor.style.backdropFilter = 'none'
+        cursor.style.outline = '2px solid white'
+        cursorHovering = elem
+        mouseTarget = () => {
+            return [elemRect.left + elem.offsetWidth/2, elemRect.top + elem.offsetHeight/2]
+        }
+    }
+
+    elem.onmouseleave = () => {
+        if(!contextMenuOpen && !selectedTool) {
+            mouseTarget = () => {return [mouse[0], mouse[1]]}
+            cursor.style.width = '15px'
+            cursor.style.height = '15px'
+            cursor.style.borderRadius = '50%'
+            cursor.style.outline = 'none'
+            cursor.style.backdropFilter = 'invert()'
+        }
+    }
+})
+
 let contextMenuOpen = false
 document.addEventListener('contextmenu', ev => {
     if(customContextMenu && !selectedTool) {
@@ -181,9 +279,7 @@ document.addEventListener('contextmenu', ev => {
     }
 })
 
-cursor.onmouseleave = () => {
-    closeContextMenu(true)
-}
+cursor.onmouseleave = () => {closeContextMenu(true)}
 
 function openContextMenu() {
     const buttons = []
@@ -252,6 +348,23 @@ function openContextMenu() {
             })
         }
 
+        if(cursorHovering.getAttribute('hex')) {
+            buttons.push({
+                text: 'Copy HEX code',
+                action: () => {
+                    navigator.clipboard.writeText(cursorHovering.getAttribute('hex'))
+                }
+            })
+        }
+
+        if(cursorHovering.getAttribute('rgb')) {
+            buttons.push({
+                text: 'Copy RGB values',
+                action: () => {
+                    navigator.clipboard.writeText(cursorHovering.getAttribute('rgb'))
+                }
+            })
+        }
     }
 
     if(window.getSelection().toString().length > 0) {
