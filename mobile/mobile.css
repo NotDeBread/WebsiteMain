@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --bouncy: cubic-bezier(0,2,.75,1);
+}
+
+body {
+  margin: 25px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  scrollbar-width: none;
+  background-color: rgb(20, 20, 20);
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: rgb(255, 193, 87);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+#crt {
+    background-image: url(../media/pixel.png);
+    width: 100dvw;
+    height: 100dvh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.1;
+    mix-blend-mode: multiply;
+    image-rendering: pixelated;
+    pointer-events: none;
+}
+
+.smallText {
+    font-size: 0.75em;
+    color: grey;
+}
+
+#title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+#titleText {
+    line-height: 1;
+}
+
+#waveyTitle {
+    font-size: 2em;
+    font-weight: 900;
+}
+
+.genericContainer {
+    outline: 1px solid white;
+    padding: 5px;
+    background: url(../media/bg.svg);
+    background-size: 150px;
+    background-color: rgb(0,0,0,0.5);
+    margin-top: 10px;
+    position: relative;
+    animation: bgLoop 15s linear infinite forwards;
+    transition: height ease-in-out 500ms;
+}
+
+@keyframes bgLoop {
+  to {
+    background-position: 150px 150px;
+  }
+}
+
+.aboutMeSection {
+    transition: opacity ease-in-out 500ms;
+}
+
+.genericContainerTitle {
+    font-size: 1.25em;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    gap: 10px;
+}
+
+.coolLine {
+    height: 1px;
+    background-color: rgb(255,255,255,0.25);
+    width: 100%;
+}
+
+.fakeBannerAd {
+    height: 75px;
+    outline: 2px solid red;
+    margin-top: 10px;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    cursor: pointer;
+}
+
+.bannerAdText {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+    color: rgb(254, 151, 1);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2em;
+    text-shadow: 1px 0 0 #813300,0 1px 0 #c14d00,2px 1px .35px #813300,1px 2px .35px #c14d00,3px 2px .35px #813300,2px 3px .35px #c14d00,4px 3px .35px #813300,3px 4px .35px #c14d00,5px 4px .35px #813300,4px 5px .35px #c14d00,6px 5px .35px #813300,5px 6px .35px #c14d00,7px 6px .35px #813300,6px 7px .35px #c14d00;
+    padding: 5px;
+    transform: skewY(5deg);
+}
+
+.fakeBannerAd img {
+    position: absolute;
+    bottom: -25px;
+    right: 0px;
+    width: 150px;
+    z-index: 2;
+    filter: drop-shadow(1px 0 0 white) 
+        drop-shadow(0 1px 0 white)
+        drop-shadow(-1px 0 0 white) 
+        drop-shadow(0 -1px 0 white);
+}
+
+#aboutMeGuy {
+    filter: drop-shadow(1px 0 0 white) 
+    drop-shadow(0 1px 0 white)
+    drop-shadow(-1px 0 0 white) 
+    drop-shadow(0 -1px 0 white);
+
+}
+
+.game {
+    height: calc(150px - 10px);
+    background-color: rgb(10,10,10);
+    padding: 5px;
+    border: 1px solid;
+    user-select: none;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.gameInfo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 10px;
+    width: calc(100% - 20px);
+    height: 100px;
+    background: linear-gradient(rgb(0,0,0,0.75), transparent);
+    z-index: 2;
+}
+
+.gameInfo span:nth-child(1) {
+    font-size: 1.25em;
+    font-weight: 700;
+}
+
+.gameBGOverlay, .gameBG {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.gameBGOverlay {
+    z-index: 1;
+    background-color: rgb(0,0,0,0.5);
+}
+
+.gameBG {
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.warningTape {
+    position: absolute;
+    left: -10%;
+    top: 50px;
+    width: 125%;
+    background-color: yellow;
+    padding: 2px 0px;
+    text-align: center;
+    color: black;
+    font-weight: 900;
+    height: 25px;
+    z-index: 3;
+}
+
+#socialsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+#socialsContainer div {
+    cursor: pointer;
+}
+
+#socialsContainer svg {
+    scale: 1;
+    height: 40px;
+    width: 40px;
+}
+
+#footer {
+    text-align: center;
+    position: relative;
+    margin-top: 200px;
+}
+
+#footerGuy {
+    height: 100px;
+    cursor: pointer;
+    filter: drop-shadow(1px 0 0 white) 
+          drop-shadow(0 1px 0 white)
+          drop-shadow(-1px 0 0 white) 
+          drop-shadow(0 -1px 0 white);
+    transition: scale var(--bouncy) 250ms, translate var(--bouncy) 250ms;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#footerGuy:active {
+  scale: 1.2 0.9;
+  translate: 0 5px;
+}

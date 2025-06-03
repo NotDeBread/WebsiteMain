@@ -728,3 +728,8 @@ function formatTime(time) {
 
     return `${minutes}:${DeBread.round(seconds).toString().padStart(2,0)}`
 }
+
+if(window.innerWidth < 750) {
+    console.log(`Redirecting to mobile site... ${window.innerWidth}`)
+    window.open('/mobile','_self')
+}

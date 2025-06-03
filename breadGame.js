@@ -1,31 +1,31 @@
 let gameSpeed = 1
 
-setInterval(() => {
-    const cloud = document.createElement('img')
-    cloud.id = 'cloud'
-    cloud.src = `media/breadGame/cloud${DeBread.randomNum(0, 5)}.png`
-    cloud.style.position = 'absolute'
+// setInterval(() => {
+//     const cloud = document.createElement('img')
+//     cloud.id = 'cloud'
+//     cloud.src = `media/breadGame/cloud${DeBread.randomNum(0, 5)}.png`
+//     cloud.style.position = 'absolute'
 
-    cloud.pos = window.innerWidth
-    cloud.style.left = `${window.innerWidth}px`
-    cloud.style.top = DeBread.randomNum(200, doge('breadGameSky').offsetHeight - 200) + 'px'
-    cloud.style.width = '32px'
+//     cloud.pos = window.innerWidth
+//     cloud.style.left = `${window.innerWidth}px`
+//     cloud.style.top = DeBread.randomNum(200, doge('breadGameSky').offsetHeight - 200) + 'px'
+//     cloud.style.width = '32px'
 
-    cloud.interval = setInterval(() => {
-        cloud.pos -= 1 * gameSpeed
-        cloud.style.left = `${cloud.pos}px`
+//     cloud.interval = setInterval(() => {
+//         cloud.pos -= 1 * gameSpeed
+//         cloud.style.left = `${cloud.pos}px`
 
-        if(cloud.pos < -cloud.offsetWidth) {
-            clearInterval(cloud.interval)
-            cloud.remove()
-        }
-        if(!gameActive) {
-            clearInterval(cloud.interval)
-        }
-    }, 10);
+//         if(cloud.pos < -cloud.offsetWidth) {
+//             clearInterval(cloud.interval)
+//             cloud.remove()
+//         }
+//         if(!gameActive) {
+//             clearInterval(cloud.interval)
+//         }
+//     }, 10);
     
-    doge('breadGameSky').append(cloud);
-}, 1000);
+//     doge('breadGameSky').append(cloud);
+// }, 1000);
 
 const player = {
     grav: 0,
